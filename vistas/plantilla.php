@@ -34,38 +34,22 @@ session_start();
 
         if (isset($_GET["ruta"])) {
         
-          if ($_GET["ruta"] == "nacional" ||
-              $_GET["ruta"] == "internacional" ||
-              $_GET["ruta"] == "bulto" ||
-              $_GET["ruta"] == "reporte-despachos" ||
-              $_GET["ruta"] == "salir" ||
-              $_GET["ruta"] == "aviso" ||
-              $_GET["ruta"] == "paquetes" ||
-              $_GET["ruta"] == "numero-despacho" ||
-              $_GET["ruta"] == "reporte-destino" ||
-              $_GET["ruta"] == "recibo" ||
-              $_GET["ruta"] == "tablilla" ||
-              $_GET["ruta"] == "reporte-estadisticos" ||
-              $_GET["ruta"] == "administrar-usuarios" ||
-              $_GET["ruta"] == "administrar-servicios" ||
-              $_GET["ruta"] == "administrar-plantilla" ||
-              $_GET["ruta"] == "administrar-departamentos" ||
+          if ($_GET["ruta"] == "desinaciones" ||
               $_GET["ruta"] == "perfil" ||
-              $_GET["ruta"] == "certificado" ||
-              $_GET["ruta"] == "colis" ||
-              $_GET["ruta"] == "despacho") {
+              $_GET["ruta"] == "salir"
+              ) {
               
               include_once "vistas/modulos/".$_GET["ruta"].".php";
 
             }else{
 
-              include_once "vistas/modulos/bulto.php";
+              include_once "vistas/modulos/designaciones.php";
 
             }
 
         }else{
 
-        include_once "vistas/modulos/bulto.php";
+        include_once "vistas/modulos/designaciones.php";
         }
 
         include_once "vistas/modulos/plantilla/footer.php";

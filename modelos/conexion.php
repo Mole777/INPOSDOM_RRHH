@@ -7,7 +7,7 @@ class Conexion{
 		
 		try {
 			
-			$link = new PDO("mysql:host=localhost;dbname=db_ssop", "root", "");
+			$link = new PDO("mysql:host=localhost;dbname=db_rrhh", "root", "");
 
 			$link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

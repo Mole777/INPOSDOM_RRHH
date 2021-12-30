@@ -9,26 +9,29 @@ class ctrUsuario{
 
 			if (!empty($_POST["ingUsuario"]) && !empty($_POST["ingClave"])) {
 				
-				$tabla = "Usuarios";
-				$campo = "usuario";
+				$tabla = "Usuarios_rrhh";
+				$campo = "Usuario";
 				$valor = $_POST["ingUsuario"];
 
 				$respuesta = mdlUsuario::mdlMostrarUsuario($tabla, $campo, $valor);			
 
-				if (!$respuesta || $respuesta["Clave"] != $_POST["ingClave"]) {
 
-					echo '<div class="container"><div class="alert alert-danger mt-2 text-center"> Error de credenciales</div></div>';
+				if ($respuesta["Usuario"] == $_POST["ingUsuario"] && $respuesta["Clave"] == $_POST["ingClave"] && $respuesta["Estado"] == "Activo") {
 					
-				}else{
-
 					$_SESSION["IniciarSesion"] = "ok";
-					$_SESSION["EstadoUsuario"] = $respuesta["EstadoID"];
 					$_SESSION["Nombre"] = $respuesta["Nombre"];
 					$_SESSION["Apellido"] = $respuesta["Apellido"];
-					$_SESSION["Tipo"] = $respuesta["Tipo"];
+					$_SESSION["Rol"] = $respuesta["Rol"];
+					$_SESSION["Departamento"] = $respuesta["Departamento"];
 
-					echo '<script> window.location = "Inicio" </script>';
-						
+					echo '<script>
+
+							window.location = "inicio";
+
+						</script>';
+
+					header("Refresh:0");
+
 				}
 								
 			}

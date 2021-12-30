@@ -444,3 +444,14 @@ $(function () {
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
 });
+
+//FUNCION PARA RESETAR CAMPOS
+
+$(function(){
+    
+    $(".btn-reset").on("click", function(){
+
+        $(":text").text("");
+
+    });
+})

@@ -12,7 +12,11 @@ class mdlUsuario{
 	static public function mdlMostrarUsuario($tabla, $campo, $valor)
 	{
 
-		$stmt = Conexion::conectar()->prepare("SELECT * FROM `usuarios` as `u` INNER JOIN `roles` as `r` ON u.RolID = r.Id WHERE $campo = :$campo");
+		$stmt = Conexion::conectar()->prepare("SELECT usu.Nombre, usu.Apellido, usu.Usuario, usu.Clave, est.Tipo AS Estado, rol.Nombre AS Rol, dep.Nombre AS Departamento FROM usuarios_rrhh AS usu 
+			INNER JOIN estado_rrhh AS est ON usu.EstadoID = est.Id 
+			INNER JOIN roles_rrhh AS rol ON usu.RolID = rol.Id
+			INNER JOIN departamentos_inposdom AS dep ON rol.DepartamentoID = dep.Id
+			WHERE $campo = :$campo");
 
 		$stmt -> bindParam(":".$campo, $valor, PDO::PARAM_STR);
 
