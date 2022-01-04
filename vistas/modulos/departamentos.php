@@ -81,7 +81,7 @@
                         <td>'.$value["Nombre"].'</td>
                         <td>
                           <div class="btn-group">
-                            <button class="btn btn-default btn-sm" idEditarDepartamento='.$value["Id"].' data-toggle="modal" data-target="#editarDepartamento">Editar</button>
+                            <button class="btn btn-default btn-sm btnEditarDepartamento" idEditarDepartamento='.$value["Id"].' data-toggle="modal" data-target="#modalEditarDepartamento">Editar</button>
                             <button class="btn btn-danger btn-sm btnEliminarDepartamento" idEliminarDepartamento='.$value["Id"].'>Eliminar</button>
                           </div>
                         </td>
@@ -109,7 +109,7 @@
 
 <!-- MODAL CREAR DESIGNACION -->
 
-<div class="modal fade" id="crearDepartamento" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="crearDepartamentoLabel" aria-hidden="true">
+<div class="modal fade" id="modalEditarDepartamento" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="crearDepartamentoLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
 
@@ -162,9 +162,9 @@
 </div>
 
 
-<!-- MODAL MOSTRAR DEPARTAMENTO -->
+<!-- MODAL EDITAR DEPARTAMENTO -->
 
-<div class="modal fade" id="crearDepartamento" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="crearDepartamentoLabel" aria-hidden="true">
+<div class="modal fade" id="editarDepartamento" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="crearDepartamentoLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
 
@@ -191,6 +191,7 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="nombre"> Nombre: </label>
+                  <input type="hidden" name="idDepartamento" id="idDepartamento">
                   <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombre" name="regNombre" required>
                 </div>
               </div>
@@ -206,8 +207,8 @@
 
         <?php
 
-          $crearDepartamento = new ctrDepartamento();
-          $crearDepartamento -> ctrCrearDepartamento();
+          $editarDepartamento = new ctrDepartamento();
+          $editarDepartamento -> ctrEditarDepartamento();
 
         ?>
 

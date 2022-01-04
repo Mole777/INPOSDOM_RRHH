@@ -49,6 +49,42 @@
 			return $respuesta;
 		}
 
+		public function ctrEditarDepartamento()
+		{
+			if (isset($_POST["editarDepartamento"])) {
+				
+				if (isset($_POST["regNombre"])) {
+					
+					$tabla = "departamentos_inposdom";
+					$datos = array('id' => $_POST["editarDepartamento"],
+						'nombre' => $_POST["regNombre"]);
+
+					$respuesta = mdlDepartamento::mdlEditarDepartamento($tabla, $campo, $valor);
+
+					if($respuesta == "ok"){
+
+					echo'<script>
+
+					Swal.fire({
+						  type: "success",
+						  title: "El departamento ha sido actualizado correctamente",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result){
+									if (result.value) {
+
+									window.location = "departamentos";
+
+									}
+								})
+
+					</script>';
+
+				}
+				}
+			}
+		}
+
 		public function ctrEliminarDepartamento()
 		{
 			if (isset($_GET["idDepartamento"])) {

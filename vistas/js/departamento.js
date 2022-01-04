@@ -1,4 +1,17 @@
 /*=============================================
+EDITAR DEPARTAMENTO
+=============================================*/
+$(".tablaDepartamento").on("click", ".btnEditarDepartamento", function(){
+
+  var idDepartamento = $(this).attr("idEditarDepartamento");
+
+  
+
+})
+
+
+
+/*=============================================
 ELIMINAR DEPARTAMENTO
 =============================================*/
 
