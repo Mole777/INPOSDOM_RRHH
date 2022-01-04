@@ -52,9 +52,21 @@ class mdlDesignacion{
 
 	}
 
-	static public function mdlEliminarDesignacion($campo, $valor)
+	static public function mdlEliminarDesignacion($tabla, $datos)
 	{
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE Id = :id");
 
+		$stmt->bindParam(":id", $datos, PDO::PARAM_INT);
+
+		if ($stmt->execute()) {
+			return "ok";
+		}else{
+
+			return false;
+		}
+
+		$stmt->close();
+		$stmt=null;
 	}
 
 

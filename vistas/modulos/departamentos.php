@@ -56,7 +56,7 @@
 
             <div class="col-md-12">
             
-              <table class="table table-striped table-hover table-bordered table-sm tableDataSimple">
+              <table class="table table-striped table-hover table-bordered table-sm tableDataSimple tablaDepartamento">
                 <thead>
                   <tr>
                     <th>No.</th>

@@ -81,9 +81,38 @@ class ctrDesignacion{
 
 	}
 
-	public function ctrEliminarDesignacion($id)
+	public function ctrEliminarDesignacion()
 	{
+		if (isset($_GET["idDesignacion"])) {
+			
+			$tabla = "designaciones";
+			$datos = $_GET["idDesignacion"];
 
+			$respuesta = mdlDesignacion::mdlEliminarDesignacion($tabla, $datos);
+
+			if($respuesta == "ok"){
+
+					echo'<script>
+
+					Swal.fire({
+						  type: "success",
+						  title: "La designación ha sido borrada correctamente",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar",
+						  closeOnConfirm: false
+						  }).then(function(result){
+									if (result.value) {
+
+									window.location = "designaciones";
+
+									}
+								})
+
+					</script>';
+
+				}	
+		}
+		
 	}
 
 }

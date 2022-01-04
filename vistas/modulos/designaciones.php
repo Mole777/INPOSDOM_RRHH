@@ -37,7 +37,7 @@
 
             <div class="col-12" id="example1_wrapper">
 
-              <table class="table table-hover table-striped tableData table-bordered table-sm">
+              <table class="table table-hover table-striped tableData table-bordered table-sm table-condensed tablaDesignacion">
 
                 <thead>
                   <tr>
@@ -81,8 +81,9 @@
                         <td>'.$value["Fecha_Ingreso"].'</td>
                         <td>
                           <div class="btn-group">
-                            <button class="btn btn-default" idDesignacion='.$value["Id"].' data-toggle="modal" data-target="#editarDesignacion">Editar</button>
-                            <button class="btn btn-primary btn-sm" idDesignacion='.$value["Id"].' data-toggle="modal" data-target="#mostrarDesignacion">Más info</button>
+                            <button class="btn btn-info" idDesignacion='.$value["Id"].' data-toggle="modal" data-target="#editarDesignacion"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-default" idDesignacion='.$value["Id"].' data-toggle="modal" data-target="#mostrarDesignacion"><i class="fas fa-search"></i></button>
+                            <button class="btn btn-danger btnEliminarDesignacion" idEliminarDesignacion='.$value["Id"].' ><i class="fas fa-trash-alt"></i></button>
                           </div>
                         </td>
                       </tr>';
@@ -216,7 +217,7 @@
           </div>
 
         <div class="modal-footer">
-          <button type="reset" class="btn btn-secondary">Vaciar registro</button>
+          <button type="reset" class="btn btn-secondary">Limpiar registro</button>
           <button type="submit" class="btn btn-primary" name="guardar">Guardar registro</button>
         </div>
 
@@ -339,3 +340,10 @@
     </div>
   </div>
 </div>
+
+<?php
+  
+  $eliminarDesignacion = new ctrDesignacion();
+  $eliminarDesignacion->ctrEliminarDesignacion();
+
+?>

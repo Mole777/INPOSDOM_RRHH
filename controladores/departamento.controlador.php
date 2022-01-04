@@ -60,25 +60,25 @@
 
 				if($respuesta == "ok"){
 
-				echo'<script>
+					echo'<script>
 
-				Swal.fire({
-					  type: "success",
-					  title: "El departamento ha sido borrado correctamente",
-					  showConfirmButton: true,
-					  confirmButtonText: "Cerrar",
-					  closeOnConfirm: false
-					  }).then(function(result){
-								if (result.value) {
+					Swal.fire({
+						  type: "success",
+						  title: "El departamento ha sido borrado correctamente",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar",
+						  closeOnConfirm: false
+						  }).then(function(result){
+									if (result.value) {
 
-								window.location = "departamentos";
+									window.location = "departamentos";
 
-								}
-							})
+									}
+								})
 
-				</script>';
+					</script>';
 
-			}	
+				}	
 			}
 		}
 

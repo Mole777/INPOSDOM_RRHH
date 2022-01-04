@@ -99,6 +99,7 @@ session_start();
     
   <!-- JS -->
   <script src="vistas/js/departamento.js"></script>
+  <script src="vistas/js/designacion.js"></script>
     
   </body>
 </html>
