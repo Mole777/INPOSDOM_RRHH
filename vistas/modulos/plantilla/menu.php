@@ -5,7 +5,7 @@
 
     <img src="vistas/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
 
-    <span class="brand-text font-weight-light">INPOSDOM</span>
+    <span class="brand-text font-weight-light"><b>RRHH</b></span>
   
   </a>
 
@@ -22,9 +22,9 @@
   
       <div class="info">
   
-        <a href="#" class="d-block"><?= $_SESSION["Nombre"]; ?></a>
+        <a href="#" class="d-block"> <?= $_SESSION["Nombre"]; ?></a>
   
-        <i class="muted" style="color: white;"><?= $_SESSION["Rol"]; ?></i>
+        <i class="muted" style="color: white;"> <?= $_SESSION["Rol"]; ?></i>
   
       </div>
   
@@ -38,7 +38,7 @@
 
           <a href="bulto" class="nav-link" id="bulto_postal">
 
-            <i class="nav-icon fas fa-user-plus"></i>
+            <i class="nav-icon fas fa-users"></i>
 
             <p>Reclutamiento y Selección de Personal</p>
           

@@ -451,7 +451,8 @@ $(function(){
     
     $(".btn-reset").on("click", function(){
 
-        $(":text").text("");
+        $("input").text("");
+        $("textarea").text("");
 
     });
 })

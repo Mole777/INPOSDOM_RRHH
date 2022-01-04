@@ -28,7 +28,7 @@ class mdlUsuario{
 
 	static public function mdlActualizarUsuario()
 	{
-
+		
 	}
 
 	static public function mdlEliminarUsuario()
