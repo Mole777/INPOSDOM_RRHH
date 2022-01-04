@@ -82,7 +82,7 @@
                         <td>
                           <div class="btn-group">
                             <button class="btn btn-default btn-sm" idEditarDepartamento='.$value["Id"].' data-toggle="modal" data-target="#editarDepartamento">Editar</button>
-                            <button class="btn btn-danger btn-sm" idEliminarDepartamento='.$value["Id"].'>Eliminar</button>
+                            <button class="btn btn-danger btn-sm btnEliminarDepartamento" idEliminarDepartamento='.$value["Id"].'>Eliminar</button>
                           </div>
                         </td>
                       </tr>';
@@ -215,3 +215,11 @@
     </div>
   </div>
 </div>
+
+
+<?php
+
+  $eliminarDepartamento = new ctrDepartamento();
+  $eliminarDepartamento -> ctrEliminarDepartamento();
+
+?>

@@ -49,5 +49,38 @@
 			return $respuesta;
 		}
 
+		public function ctrEliminarDepartamento()
+		{
+			if (isset($_GET["idDepartamento"])) {
+				
+				$tabla = "departamentos_inposdom";
+				$datos = $_GET["idDepartamento"];
+
+				$respuesta = mdlDepartamento::mdlEliminarDepartamento($tabla, $datos);
+
+				if($respuesta == "ok"){
+
+				echo'<script>
+
+				Swal.fire({
+					  type: "success",
+					  title: "El departamento ha sido borrado correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar",
+					  closeOnConfirm: false
+					  }).then(function(result){
+								if (result.value) {
+
+								window.location = "departamentos";
+
+								}
+							})
+
+				</script>';
+
+			}	
+			}
+		}
+
 
 	}

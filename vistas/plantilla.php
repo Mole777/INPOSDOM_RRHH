@@ -97,7 +97,8 @@ session_start();
 
 
     
-
+  <!-- JS -->
+  <script src="vistas/js/departamento.js"></script>
     
   </body>
 </html>
