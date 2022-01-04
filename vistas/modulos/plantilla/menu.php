@@ -36,11 +36,23 @@
 
         <li class="nav-item active">
 
-          <a href="bulto" class="nav-link" id="bulto_postal">
+          <a href="bulto" class="nav-link">
 
             <i class="nav-icon fas fa-users"></i>
 
             <p>Reclutamiento y Selección de Personal</p>
+          
+          </a>
+
+        </li>
+
+        <li class="nav-item">
+
+          <a href="departamentos" class="nav-link">
+
+            <i class="nav-icon fas fa-sitemap"></i>
+
+            <p>Administrar Departamentos</p>
           
           </a>
 

@@ -19,7 +19,7 @@
 
     <div class="card card-outline card-primary">
       <div class="card-header">
-        <h3 class="card-title"><button class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Crear Designación</button></h3>
+        <h3 class="card-title"><button class="btn btn-primary" data-toggle="modal" data-target="#crearDesignacion">Crear Designación</button></h3>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -41,7 +41,7 @@
 
                 <thead>
                   <tr>
-                    <th>#</th>
+                    <th>No.</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Cédula</th>
@@ -56,25 +56,43 @@
                 </thead>
 
                 <tbody>
+
+                  <?php
+
+                    $campo = null;
+                    $valor = null;
+
+                    $mostrarDesignaciones = ctrDesignacion::ctrMostrarDesignacion($campo, $valor);
+
+                    foreach($mostrarDesignaciones as $key => $value ):
+
+                     
+                     echo '
+                      <tr>
+                        <td>'.($key+1).'</td>
+                        <td>'.$value["Nombre"].'</td>
+                        <td>'.$value["Apellido"].'</td>
+                        <td>'.$value["Cedula"].'</td>
+                        <td>'.$value["Telefono"].'</td>
+                        <td>'.$value["Posicion"].'</td>
+                        <td>'.$value["Departamento"].'</td>
+                        <td>$'.$value["Salario"].'</td>
+                        <td>'.$value["Correo"].'</td>
+                        <td>'.$value["Fecha_Ingreso"].'</td>
+                        <td>
+                          <div class="btn-group">
+                            <button class="btn btn-default" idDesignacion='.$value["Id"].' data-toggle="modal" data-target="#editarDesignacion">Editar</button>
+                            <button class="btn btn-primary btn-sm" idDesignacion='.$value["Id"].' data-toggle="modal" data-target="#mostrarDesignacion">Más info</button>
+                          </div>
+                        </td>
+                      </tr>';
+
+                    endforeach;
+
+                  ?>
+
                 
-                  <tr>
-                    <td>1</td>
-                    <td>Génesis Melquisedec</td>
-                    <td>Sarante Feliz</td>
-                    <td>40225273560</td>
-                    <td>8296495805</td>
-                    <td>Programador</td>
-                    <td>Tecnología de la Información</td>
-                    <td>$100,000.00</td>
-                    <td>genesis.sarante@inposdom.gob.do</td>
-                    <td>09/12/2021</td>
-                    <td>
-                      <div class="btn-group">
-                        <button class="btn btn-default">Editar</button>
-                        <button class="btn btn-danger">Ver</button>
-                      </div>
-                    </td>
-                  </tr>
+                  
 
                 </tbody>
 
@@ -96,7 +114,7 @@
 
 <!-- MODAL CREAR DESIGNACION -->
 
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="crearDesignacion" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="crearDesignacionLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
 
@@ -137,14 +155,14 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="cedula"> Cédula(Sin guiones): </label>
-                  <input type="text" class="form-control" id="cedula" mask="000-000000-0" placeholder="Ingresar cédula: 000-00000-000" name="regCedula" required>
+                  <input type="number" class="form-control" id="cedula" placeholder="Ingresar cédula" name="regCedula" required>
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="telefono"> Teléfono: </label>
-                  <input type="text" class="form-control" id="telefono" placeholder="Ingresar teléfono: 000-000-0000" name="regTelefono">
+                  <input type="number" class="form-control" id="telefono" placeholder="Ingresar teléfono" name="regTelefono">
                 </div>
               </div>
 
@@ -208,6 +226,115 @@
           $crearDesignacion -> ctrCrearDesignacion();
 
         ?>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL MOSTRAR DESIGNACION -->
+
+<div class="modal fade" id="mostrarDesignacion" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="mostrarDesignacionLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+
+    <div class="modal-content">
+    
+      <div class="modal-header">
+    
+        <h5 class="modal-title" id="staticBackdropLabel">Designación</h5>
+    
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    
+          <span aria-hidden="true">&times;</span>
+    
+        </button>
+    
+      </div>
+      
+        <div class="modal-body">
+         
+          <form method="post">
+
+            <div class="row">  
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="nombre"> Nombre: </label>
+                  <input type="text" class="form-control" id="nombre">
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="apellido"> Apellido: </label>
+                  <input type="text" class="form-control" id="apellido">
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="cedula"> Cédula(Sin guiones): </label>
+                  <input type="number" class="form-control" id="cedula">
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="telefono"> Teléfono: </label>
+                  <input type="number" class="form-control" id="telefono">
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="correo"> Correo: </label>
+                  <input type="email" class="form-control" id="correo">
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="salario"> Salario: </label>
+                  <input type="number" class="form-control" id="salario">
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="posicion"> Posición: </label>
+                  <input type="text" class="form-control" id="posicion">
+                </div>
+              </div>
+              
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="departamento"> Departamento: </label>
+                  <select id="departamento" class="form-control">
+                    <option value="">Seleccionar departamento</option>
+                    <option value="1">Tecnología de la Información</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="fechaIngreso"> Fecha de Ingreso: </label>
+                  <input type="date" class="form-control" id="fechaIngreso">
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="direccion"> Dirección: </label>
+                  <textarea id="direccion" cols="30" rows="2" class="form-control"></textarea> 
+                </div>
+              </div>
+
+            </div> 
+
+          </div>
+
       </form>
     </div>
   </div>

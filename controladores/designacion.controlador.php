@@ -37,8 +37,26 @@ class ctrDesignacion{
 
 						$respuesta = mdlDesignacion::mdlCrearDesignacion($tabla, $datos);
 
-					}else{
-						echo 'Error de Formato en algunos campos';
+						if ($respuesta == "ok") {
+							
+							echo'<script>
+
+									Swal.fire({
+									  icon: "success",
+									  title: "Se ha creado correctamente la designación",
+									  showConfirmButton: false,
+									  timer: 2100
+									}).then(function(result){
+
+										if(result.value){
+										
+											window.location = "designaciones";
+
+										}
+
+									</script>';
+
+						}
 					}
 				
 			}
@@ -47,9 +65,15 @@ class ctrDesignacion{
 			
 	}
 
-	public function ctrMostrarDesignacion($campo, $valor)
+	static public function ctrMostrarDesignacion($campo, $valor)
 	{
+		$tabla = "designaciones";
 
+		$respuesta = mdlDesignacion::mdlMostrarDesignacion($tabla, $campo, $valor);
+
+		return $respuesta;
+
+		var_dump($respuesta);
 	}
 
 	public function ctrActualizarDesignacion()

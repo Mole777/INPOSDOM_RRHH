@@ -34,17 +34,25 @@ class mdlDesignacion{
 		$stmt = null;
 	}
 
-	public function mdlMostrarDesignacion($campo, $valor)
+	static public function mdlMostrarDesignacion($tabla, $campo, $valor)
+	{
+		$stmt = Conexion::conectar()->prepare("SELECT des.Id, des.Nombre, des.Apellido, des.Cedula, des.Telefono, des.Direccion, des.Correo, des.Salario, des.Posicion, des.Fecha_Ingreso, dep.Nombre AS Departamento FROM $tabla AS des INNER JOIN departamentos_inposdom AS dep ON des.DepartamentoID = dep.Id ORDER BY des.Id asc");
+
+		$stmt ->execute();
+
+		return $stmt->fetchAll();
+
+		$stmt->close();
+
+		$stmt = null;
+	}
+
+	static public function mdlActualizarDesignacion()
 	{
 
 	}
 
-	public function mdlActualizarDesignacion()
-	{
-
-	}
-
-	public function mdlEliminarDesignacion($id)
+	static public function mdlEliminarDesignacion($campo, $valor)
 	{
 
 	}

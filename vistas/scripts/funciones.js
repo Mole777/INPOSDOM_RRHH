@@ -3,6 +3,8 @@ $(function () {
     $(".tableData").DataTable({
         "responsive": true, "lengthChange": false, "autoWidth": false,
         "buttons": ["copy", "csv", "print"],
+        "order":[[0, "desc"]],
+        "lengthMenu": [[6, 10, 25, 50, "All"]],
         "language": {
             "aria": {
                 "sortAscending": "Activar para ordenar la columna de manera ascendente",
