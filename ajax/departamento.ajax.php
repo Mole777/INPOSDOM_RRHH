@@ -14,13 +14,14 @@ class ajaxDepartamento{
 		$valor = $this->idDepartamento;
 
 		$respuesta = ctrDepartamento::ctrMostrarDepartamento($campo, $valor);
-
+	
 		echo json_encode($respuesta);
+		
 	}
 }
 
 /*=============================================
-EDITAR CLIENTE
+EDITAR DEPARTAMENTO
 =============================================*/	
 
 if (isset($_POST["idDepartamento"])) {

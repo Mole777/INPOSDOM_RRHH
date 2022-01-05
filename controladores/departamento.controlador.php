@@ -51,15 +51,15 @@
 
 		public function ctrEditarDepartamento()
 		{
-			if (isset($_POST["editarDepartamento"])) {
+			if (isset($_POST["actualizar"])) {
 				
 				if (isset($_POST["regNombre"])) {
 					
 					$tabla = "departamentos_inposdom";
-					$datos = array('id' => $_POST["editarDepartamento"],
+					$datos = array('id' => $_POST["idDepartamento"],
 						'nombre' => $_POST["regNombre"]);
 
-					$respuesta = mdlDepartamento::mdlEditarDepartamento($tabla, $campo, $valor);
+					$respuesta = mdlDepartamento::mdlEditarDepartamento($tabla, $datos);
 
 					if($respuesta == "ok"){
 

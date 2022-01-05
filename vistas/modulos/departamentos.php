@@ -42,7 +42,7 @@
         
         <div class="card-title">
 
-          <button class="btn btn-primary" data-toggle="modal" data-target="#crearDepartamento"> Crear Departamento </button>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearDepartamento"> Crear Departamento </button>
 
         </div>
 
@@ -81,8 +81,9 @@
                         <td>'.$value["Nombre"].'</td>
                         <td>
                           <div class="btn-group">
-                            <button class="btn btn-default btn-sm btnEditarDepartamento" idEditarDepartamento='.$value["Id"].' data-toggle="modal" data-target="#modalEditarDepartamento">Editar</button>
-                            <button class="btn btn-danger btn-sm btnEliminarDepartamento" idEliminarDepartamento='.$value["Id"].'>Eliminar</button>
+                            <button class="btn btn-default btnEditarDepartamento" idDepartamento='.$value["Id"].' data-toggle="modal" data-target="#modalEditarDepartamento"><i class="fas fa-edit"></i></button>
+                            
+                            <button class="btn btn-danger btnEliminarDepartamento" idDepartamento='.$value["Id"].'><i class="fas fa-trash-alt"></i></button>
                           </div>
                         </td>
                       </tr>';
@@ -109,7 +110,7 @@
 
 <!-- MODAL CREAR DESIGNACION -->
 
-<div class="modal fade" id="modalEditarDepartamento" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="crearDepartamentoLabel" aria-hidden="true">
+<div class="modal fade" id="modalCrearDepartamento" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="crearDepartamentoLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
 
@@ -164,7 +165,7 @@
 
 <!-- MODAL EDITAR DEPARTAMENTO -->
 
-<div class="modal fade" id="editarDepartamento" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="crearDepartamentoLabel" aria-hidden="true">
+<div class="modal fade" id="modalEditarDepartamento" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="editarDepartamentoLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
 
@@ -172,7 +173,7 @@
     
       <div class="modal-header">
     
-        <h5 class="modal-title" id="crearDepartamentoLabel">Crear departamento</h5>
+        <h5 class="modal-title" id="editarDepartamentoLabel">Editar departamento</h5>
     
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     
@@ -191,8 +192,8 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="nombre"> Nombre: </label>
-                  <input type="hidden" name="idDepartamento" id="idDepartamento">
-                  <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombre" name="regNombre" required>
+                  <input type="hidden" name="idDepartamento" id="editarIdDepartamento">
+                  <input type="text" class="form-control" id="editarNombreDepartamento" name="regNombre" required>
                 </div>
               </div>
 
@@ -202,7 +203,7 @@
 
         <div class="modal-footer">
           <button type="reset" class="btn btn-secondary">Vaciar registro</button>
-          <button type="submit" class="btn btn-primary" name="guardar">Guardar registro</button>
+          <button type="submit" class="btn btn-primary" name="actualizar">Actualizar registro</button>
         </div>
 
         <?php
