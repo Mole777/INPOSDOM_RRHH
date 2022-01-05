@@ -72,8 +72,6 @@ class ctrDesignacion{
 		$respuesta = mdlDesignacion::mdlMostrarDesignacion($tabla, $campo, $valor);
 
 		return $respuesta;
-
-		var_dump($respuesta);
 	}
 
 	public function ctrActualizarDesignacion()

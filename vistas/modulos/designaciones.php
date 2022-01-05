@@ -193,7 +193,20 @@
                   <label for="departamento"> Departamento: </label>
                   <select name="regDepartamento" id="departamento" class="form-control" required>
                     <option value="">Seleccionar departamento</option>
-                    <option value="1">Tecnología de la Información</option>
+                    <?php
+
+                    $campo = null;
+                    $valor = null;
+                    $mostrarDepartamentos =ctrDepartamento::ctrMostrarDepartamento($campo, $valor);
+
+
+                    foreach ($mostrarDepartamentos as $key => $value):
+                      echo '<option value='.$value["Id"].'>'.$value["Nombre"].'</option>';
+                    
+                    endforeach;
+                    ?>
+                    
+                    
                   </select>
                 </div>
               </div>
@@ -233,7 +246,7 @@
 </div>
 
 
-<!-- MODAL MOSTRAR DESIGNACION -->
+<!-- MODAL EDITAR DESIGNACION -->
 
 <div class="modal fade" id="mostrarDesignacion" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="mostrarDesignacionLabel" aria-hidden="true">
 
