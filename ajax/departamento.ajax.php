@@ -16,7 +16,6 @@ class ajaxDepartamento{
 		$respuesta = ctrDepartamento::ctrMostrarDepartamento($campo, $valor);
 	
 		echo json_encode($respuesta);
-		
 	}
 }
 

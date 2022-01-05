@@ -36,7 +36,7 @@
 
         <li class="nav-item active">
 
-          <a href="bulto" class="nav-link">
+          <a href="designaciones" class="nav-link">
 
             <i class="nav-icon fas fa-users"></i>
 

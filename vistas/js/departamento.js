@@ -18,7 +18,7 @@ $(".tablaDepartamento").on("click", ".btnEditarDepartamento", function(){
     contentType: false,
     processData: false,
     dataType: "json",
-    success:function(respuesta){
+    success: function(respuesta){
 
       $("#editarIdDepartamento").val(respuesta["Id"]);
       $("#editarNombreDepartamento").val(respuesta["Nombre"]);
@@ -26,7 +26,6 @@ $(".tablaDepartamento").on("click", ".btnEditarDepartamento", function(){
     }
   })
 
-  
 })
 
 

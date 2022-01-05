@@ -36,21 +36,73 @@ class mdlDesignacion{
 
 	static public function mdlMostrarDesignacion($tabla, $campo, $valor)
 	{
-		$stmt = Conexion::conectar()->prepare("SELECT des.Id, des.Nombre, des.Apellido, des.Cedula, des.Telefono, des.Direccion, des.Correo, des.Salario, des.Posicion, des.Fecha_Ingreso, dep.Nombre AS Departamento FROM $tabla AS des INNER JOIN departamentos_inposdom AS dep ON des.DepartamentoID = dep.Id ORDER BY des.Id asc");
+		if ($campo != null) {
+			
+			$stmt = Conexion::conectar()->prepare("SELECT des.Id AS Id, des.Nombre, des.Apellido, des.Cedula, des.Telefono, des.Direccion, des.Correo, des.Salario, des.Posicion, des.Fecha_Ingreso, dep.Nombre AS Departamento FROM $tabla AS des INNER JOIN departamentos_inposdom AS dep ON des.DepartamentoID = dep.Id WHERE des.Id = :$campo");
 
-		$stmt ->execute();
+			$stmt->bindParam(":".$campo, $valor, PDO::PARAM_STR);
 
-		return $stmt->fetchAll();
+			if ($stmt->execute()) {
+
+				return $stmt->fetch(); 
+
+			}else{
+
+				return false;
+			}
+
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT des.Id, des.Nombre, des.Apellido, des.Cedula, des.Telefono, des.Direccion, des.Correo, des.Salario, des.Posicion, des.Fecha_Ingreso, dep.Nombre AS Departamento FROM $tabla AS des INNER JOIN departamentos_inposdom AS dep ON des.DepartamentoID = dep.Id ORDER BY des.Id asc");
+
+			if ($stmt ->execute()) {
+
+				return $stmt->fetchAll();
+
+			}else{
+
+				return false;
+			}
+				
+		
+		}
 
 		$stmt->close();
 
 		$stmt = null;
+			
 	}
 
-	static public function mdlActualizarDesignacion()
-	{
+	static public function mdlEditarDesignacion($tabla, $datos)
+		{
+			$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET Nombre = :nombre, Apellido = :apellido, Cedula = :cedula, Telefono = :telefono, Direccion = :direccion, Correo = :correo, Salario = :salario, Posicion = :posicion, Fecha_Ingreso = :fechaIngreso, DepartamentoID = :departamento WHERE Id = :id");
+			
+			$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
+			$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+			$stmt->bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
+			$stmt->bindParam(":cedula", $datos["cedula"], PDO::PARAM_STR);
+			$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
+			$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
+			$stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
+			$stmt->bindParam(":salario", $datos["salario"], PDO::PARAM_STR);
+			$stmt->bindParam(":posicion", $datos["posicion"], PDO::PARAM_STR);
+			$stmt->bindParam(":fechaIngreso", $datos["fechaIngreso"], PDO::PARAM_STR);
+			$stmt->bindParam(":departamento", $datos["departamento"], PDO::PARAM_INT);
 
-	}
+
+			if ($stmt->execute()) {
+
+				return "ok";
+
+			}else{
+
+				return false;
+			}
+
+			$stmt->close();
+			$stmt=null;
+		}
 
 	static public function mdlEliminarDesignacion($tabla, $datos)
 	{
@@ -59,7 +111,9 @@ class mdlDesignacion{
 		$stmt->bindParam(":id", $datos, PDO::PARAM_INT);
 
 		if ($stmt->execute()) {
+
 			return "ok";
+			
 		}else{
 
 			return false;
