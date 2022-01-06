@@ -50,7 +50,7 @@ class ctrUsuario{
 		
 	}
 
-	public function ctrActualizarUsuario()
+	public function ctrEditarUsuario()
 	{
 
 	}

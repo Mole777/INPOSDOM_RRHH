@@ -1,0 +1,27 @@
+#FUNCION PARA OBTENER LOS DATOS EN PANTALLA SIN RECARGAR LA PAGINA
+
+/*=============================================
+MOSTRAR TODAS LAS DESIGNACIONES
+=============================================*/
+
+$.ajax({
+
+  url: "ajax/designacion.ajax.php",
+  method: "POST",
+  data: {"idDesignaciones":1},
+  success: function(respuesta){
+
+    var obj = jQuery.parseJSON(respuesta);
+
+    $.each(obj, function(key,value) {
+    
+      $("table:tr:td").val(value.Nombre);
+    
+    }); 
+    console.log("respuesta", respuesta);
+  }
+
+})
+
+
+---------------------------------------------------------------------------------------------------

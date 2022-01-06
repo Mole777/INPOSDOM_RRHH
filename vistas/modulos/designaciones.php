@@ -307,7 +307,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="editarSalarioDesignacion"> Salario: </label>
-                  <input type="number" class="form-control" id="editarSalarioDesignacion" placeholder="Ingresar salario" name="regSalario" required>
+                  <input type="text" class="form-control" id="editarSalarioDesignacion" placeholder="Ingresar salario" name="regSalario" required>
                 </div>
               </div>
 
@@ -322,12 +322,9 @@
                 
                 <div class="form-group">
                 
-                  <label for="departamento"> Departamento: </label>
-                 
+                  <label for="departamento"> Departamento: </label>             
                   <select name="regDepartamento" class="form-control" required>
-                 
-                    <option id="editarDepartamentoDesignacion" selected></option>
-                    
+                      <option value="" id="selectDepartamento"></option>
                     <?php
 
                       $campo = null;

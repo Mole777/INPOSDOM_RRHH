@@ -1,5 +1,5 @@
 /*=============================================
-EDITAR Designacion
+EDITAR DESIGNACION
 =============================================*/
 $(".tablaDesignacion").on("click", ".btnEditarDesignacion", function(){
 
@@ -25,11 +25,15 @@ $(".tablaDesignacion").on("click", ".btnEditarDesignacion", function(){
       $("#editarCedulaDesignacion").val(respuesta["Cedula"]);
       $("#editarTelefonoDesignacion").val(respuesta["Telefono"]);
       $("#editarCorreoDesignacion").val(respuesta["Correo"]);
-      $("#editarDepartamentoDesignacion").html(respuesta["Departamento"]);
       $("#editarDireccionDesignacion").val(respuesta["Direccion"]);
       $("#editarFechaIngresoDesignacion").val(respuesta["Fecha_Ingreso"]);
       $("#editarPosicionDesignacion").val(respuesta["Posicion"]);
       $("#editarSalarioDesignacion").val(respuesta["Salario"]);
+
+      $("#selectDepartamento").html(respuesta["Departamento"]);
+      $("#selectDepartamento").val(respuesta["DepartamentoID"]);
+      $("#selectDepartamento").attr("selected", true);
+
     }
   })
 

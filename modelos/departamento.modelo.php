@@ -11,7 +11,7 @@
 			$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 
 			if ($stmt->execute()) {
-				return "ok";
+				return true;
 			}else{
 
 				return false;
@@ -55,7 +55,7 @@
 
 			if ($stmt->execute()) {
 
-				return "ok";
+				return true;
 
 			}else{
 
@@ -74,7 +74,7 @@
 
 			if ($stmt->execute()) {
 				
-				return "ok";
+				return true;
 
 			}else{
 

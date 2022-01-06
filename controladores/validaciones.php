@@ -17,7 +17,7 @@
 
 		static public function soloNumeros($input){
 
-			$patron = "/^[0-9]+$/";
+			$patron = "/^[0-9.]+$/";
 			$resultado = false;
 
 			if (preg_match($patron, $input)) {
@@ -30,8 +30,10 @@
 		static public function formatearFechas($input)
 		{
 			$resultado = false;
+			$nuevaFecha = str_replace("/", "", $input);
+			$fecha = str_replace("-", "", $nuevaFecha);
 									
-			if ($input <= date("Ymd")) {
+			if ($fecha <= date("Ymd")) {
 				$resultado = true;
 			}
 

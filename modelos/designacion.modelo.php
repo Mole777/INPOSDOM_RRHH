@@ -23,7 +23,7 @@ class mdlDesignacion{
 
 			$stmt->execute();
 
-			return "ok";
+			return true;
 
 		} catch (Exception $e) {
 
@@ -38,7 +38,7 @@ class mdlDesignacion{
 	{
 		if ($campo != null) {
 			
-			$stmt = Conexion::conectar()->prepare("SELECT des.Id AS Id, des.Nombre, des.Apellido, des.Cedula, des.Telefono, des.Direccion, des.Correo, des.Salario, des.Posicion, des.Fecha_Ingreso, dep.Nombre AS Departamento FROM $tabla AS des INNER JOIN departamentos_inposdom AS dep ON des.DepartamentoID = dep.Id WHERE des.Id = :$campo");
+			$stmt = Conexion::conectar()->prepare("SELECT des.Id AS Id, des.Nombre, des.Apellido, des.Cedula, des.Telefono, des.Direccion, des.Correo, des.Salario, des.Posicion, des.Fecha_Ingreso, dep.Nombre AS Departamento, dep.Id AS DepartamentoID FROM $tabla AS des INNER JOIN departamentos_inposdom AS dep ON des.DepartamentoID = dep.Id WHERE des.Id = :$campo");
 
 			$stmt->bindParam(":".$campo, $valor, PDO::PARAM_STR);
 
@@ -87,13 +87,13 @@ class mdlDesignacion{
 			$stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
 			$stmt->bindParam(":salario", $datos["salario"], PDO::PARAM_STR);
 			$stmt->bindParam(":posicion", $datos["posicion"], PDO::PARAM_STR);
-			$stmt->bindParam(":fechaIngreso", $datos["fechaIngreso"], PDO::PARAM_STR);
+			$stmt->bindParam(":fechaIngreso", $datos["fecha"], PDO::PARAM_STR);
 			$stmt->bindParam(":departamento", $datos["departamento"], PDO::PARAM_INT);
 
 
 			if ($stmt->execute()) {
 
-				return "ok";
+				return true;
 
 			}else{
 
@@ -112,7 +112,7 @@ class mdlDesignacion{
 
 		if ($stmt->execute()) {
 
-			return "ok";
+			return true;
 			
 		}else{
 
