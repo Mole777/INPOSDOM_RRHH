@@ -154,18 +154,18 @@ class ctrDesignacion{
 						  title: "La designación ha sido borrada correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar",
-						  closeOnConfirm: false
+						  closeOnConfirm: true
 						  }).then(function(result){
 
 								if (result.value) {
 
 								window.location = "inicio";
-								header(Refresh:1);
+								
 								}
 							});
 
+					
 					</script>';
-
 
 
 				}	

@@ -35,6 +35,7 @@ $(".tablaDesignacion").on("click", ".btnEditarDesignacion", function(){
       $("#selectDepartamento").attr("selected", true);
 
     }
+    
   })
 
 });

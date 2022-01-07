@@ -137,7 +137,7 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="nombre"> Nombre: </label>
-                  <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombre" name="regNombre" required>
+                  <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombre" name="regNombre" required autocomplete="off">
                 </div>
               </div>
 
@@ -193,7 +193,7 @@
                 <div class="form-group">
                   <label for="nombre"> Nombre: </label>
                   <input type="hidden" name="idDepartamento" id="editarIdDepartamento">
-                  <input type="text" class="form-control" id="editarNombreDepartamento" name="regNombre" required>
+                  <input type="text" class="form-control" id="editarNombreDepartamento" name="regNombre" required autocomplete="off">
                 </div>
               </div>
 

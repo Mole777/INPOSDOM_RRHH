@@ -139,56 +139,56 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="nombre"> Nombre: </label>
-                  <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombre" name="regNombre" required>
+                  <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombre" name="regNombre" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="apellido"> Apellido: </label>
-                  <input type="text" class="form-control" id="apellido" placeholder="Ingresar apellido" name="regApellido" required>
+                  <input type="text" class="form-control" id="apellido" placeholder="Ingresar apellido" name="regApellido" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="cedula"> Cédula(Sin guiones): </label>
-                  <input type="number" class="form-control" id="cedula" placeholder="Ingresar cédula" name="regCedula" required>
+                  <input type="number" class="form-control" id="cedula" placeholder="Ingresar cédula" name="regCedula" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="telefono"> Teléfono: </label>
-                  <input type="number" class="form-control" id="telefono" placeholder="Ingresar teléfono" name="regTelefono">
+                  <input type="number" class="form-control" id="telefono" placeholder="Ingresar teléfono" name="regTelefono" autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="correo"> Correo: </label>
-                  <input type="email" class="form-control" id="correo" placeholder="Ingresar correo" name="regCorreo">
+                  <input type="email" class="form-control" id="correo" placeholder="Ingresar correo" name="regCorreo" autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="salario"> Salario: </label>
-                  <input type="number" class="form-control" id="salario" placeholder="Ingresar salario" name="regSalario" required>
+                  <input type="number" class="form-control" id="salario" placeholder="Ingresar salario" name="regSalario" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="posicion"> Posición: </label>
-                  <input type="text" class="form-control" id="posicion" placeholder="Ingresar posición" name="regPosicion" required>
+                  <input type="text" class="form-control" id="posicion" placeholder="Ingresar posición" name="regPosicion" required autocomplete="off">
                 </div>
               </div>
               
               <div class="col-6">
                 <div class="form-group">
                   <label for="departamento"> Departamento: </label>
-                  <select name="regDepartamento" id="departamento" class="form-control" required>
+                  <select name="regDepartamento" id="departamento" class="form-control" required autocomplete="off">
                     <option value="">Seleccionar departamento</option>
                     
                     <?php
@@ -210,14 +210,14 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="fechaIngreso"> Fecha de Ingreso: </label>
-                  <input type="date" class="form-control" id="fechaIngreso" name="regFechaIngreso" required>
+                  <input type="date" class="form-control" id="fechaIngreso" name="regFechaIngreso" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-12">
                 <div class="form-group">
                   <label for="direccion"> Dirección: </label>
-                  <textarea id="direccion" cols="30" rows="2" class="form-control" placeholder="Ingresar dirección" name="regDireccion"></textarea> 
+                  <textarea id="direccion" cols="30" rows="2" class="form-control" placeholder="Ingresar dirección" name="regDireccion" autocomplete="off"></textarea> 
                 </div>
               </div>
 
@@ -272,49 +272,49 @@
                 <div class="form-group">
                   <label for="nombre"> Nombre: </label>
                   <input type="hidden" id="editarIdDesignacion" name="idDesignacion">
-                  <input type="text" class="form-control" id="editarNombreDesignacion" placeholder="Ingresar nombre" name="regNombre" required>
+                  <input type="text" class="form-control" id="editarNombreDesignacion" placeholder="Ingresar nombre" name="regNombre" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="editarApellidoDesignacion"> Apellido: </label>
-                  <input type="text" class="form-control" id="editarApellidoDesignacion" placeholder="Ingresar apellido" name="regApellido" required>
+                  <input type="text" class="form-control" id="editarApellidoDesignacion" placeholder="Ingresar apellido" name="regApellido" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="editarCedulaDesignacion"> Cédula(Sin guiones): </label>
-                  <input type="number" class="form-control" id="editarCedulaDesignacion" placeholder="Ingresar cédula" name="regCedula" required>
+                  <input type="number" class="form-control" id="editarCedulaDesignacion" placeholder="Ingresar cédula" name="regCedula" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="editarTelefonoDesignacion"> Teléfono: </label>
-                  <input type="number" class="form-control" id="editarTelefonoDesignacion" placeholder="Ingresar teléfono" name="regTelefono">
+                  <input type="number" class="form-control" id="editarTelefonoDesignacion" placeholder="Ingresar teléfono" name="regTelefono" autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="editarCorreoDesignacion"> Correo: </label>
-                  <input type="email" class="form-control" id="editarCorreoDesignacion" placeholder="Ingresar correo" name="regCorreo">
+                  <input type="email" class="form-control" id="editarCorreoDesignacion" placeholder="Ingresar correo" name="regCorreo" autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="editarSalarioDesignacion"> Salario: </label>
-                  <input type="text" class="form-control" id="editarSalarioDesignacion" placeholder="Ingresar salario" name="regSalario" required>
+                  <input type="text" class="form-control" id="editarSalarioDesignacion" placeholder="Ingresar salario" name="regSalario" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="editarPosicionDesignacion"> Posición: </label>
-                  <input type="text" class="form-control" id="editarPosicionDesignacion" placeholder="Ingresar posición" name="regPosicion" required>
+                  <input type="text" class="form-control" id="editarPosicionDesignacion" placeholder="Ingresar posición" name="regPosicion" required autocomplete="off">
                 </div>
               </div>
               
@@ -323,7 +323,7 @@
                 <div class="form-group">
                 
                   <label for="departamento"> Departamento: </label>             
-                  <select name="regDepartamento" class="form-control" required>
+                  <select name="regDepartamento" class="form-control" required autocomplete="off">
                       <option value="" id="selectDepartamento"></option>
                     <?php
 
@@ -348,14 +348,14 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="editarFechaIngresoDesignacion"> Fecha de Ingreso: </label>
-                  <input type="date" class="form-control" id="editarFechaIngresoDesignacion" name="regFechaIngreso" required>
+                  <input type="date" class="form-control" id="editarFechaIngresoDesignacion" name="regFechaIngreso" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-12">
                 <div class="form-group">
                   <label for="editarDireccionDesignacion"> Dirección: </label>
-                  <textarea id="editarDireccionDesignacion" cols="30" rows="2" class="form-control" placeholder="Ingresar dirección" name="regDireccion"></textarea> 
+                  <textarea id="editarDireccionDesignacion" cols="30" rows="2" class="form-control" placeholder="Ingresar dirección" name="regDireccion" autocomplete="off"></textarea> 
                 </div>
               </div>
 
