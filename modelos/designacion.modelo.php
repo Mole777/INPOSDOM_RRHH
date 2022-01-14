@@ -37,7 +37,7 @@ class mdlDesignacion{
 	{
 		if ($campo != null) {
 			
-			$stmt = Conexion::conectar()->prepare("SELECT des.Id AS Id, des.Nombre, des.Apellido, des.Cedula, des.Telefono, des.Direccion, des.Correo, des.Salario, pos.Nombre AS Posicion, des.Fecha_Ingreso, dep.Nombre AS Departamento, dep.Id AS DepartamentoID FROM $tabla AS des INNER JOIN departamentos_inposdom AS dep ON des.DepartamentoID = dep.Id INNER JOIN posiciones AS pos ON des.PosicionID = pos.Id WHERE $campo = :$campo");
+			$stmt = Conexion::conectar()->prepare("SELECT des.Id AS Id, des.Nombre, des.Apellido, des.Cedula, des.Telefono, des.Direccion, des.Correo, des.Salario, pos.Nombre AS Posicion, des.Fecha_Ingreso, dep.Nombre AS Departamento, dep.Id AS DepartamentoID, pos.Id AS PosicionID FROM $tabla AS des INNER JOIN departamentos_inposdom AS dep ON des.DepartamentoID = dep.Id INNER JOIN posiciones AS pos ON des.PosicionID = pos.Id WHERE des.Id = :$campo");
 
 			$stmt->bindParam(":".$campo, $valor, PDO::PARAM_STR);
 
@@ -75,7 +75,7 @@ class mdlDesignacion{
 
 	static public function mdlEditarDesignacion($tabla, $datos)
 		{
-			$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET Nombre = :nombre, Apellido = :apellido, Cedula = :cedula, Telefono = :telefono, Direccion = :direccion, Correo = :correo, Salario = :salario, Posicion = :posicion, Fecha_Ingreso = :fecha, DepartamentoID = :departamento, UsuarioID = :usuario WHERE Id = :id");
+			$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET Nombre = :nombre, Apellido = :apellido, Cedula = :cedula, Telefono = :telefono, Direccion = :direccion, Correo = :correo, Salario = :salario, PosicionID = :posicion, Fecha_Ingreso = :fecha, DepartamentoID = :departamento, UsuarioID = :usuario WHERE Id = :id");
 			
 			$stmt -> bindParam(":id", $datos["id"], PDO::PARAM_INT);
 			$stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);

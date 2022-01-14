@@ -328,8 +328,23 @@
 
               <div class="col-6">
                 <div class="form-group">
-                  <label for="editarPosicionDesignacion"> Posición: </label>
-                  <input type="text" class="form-control" id="editarPosicionDesignacion" placeholder="Ingresar posición" name="regPosicion" required autocomplete="off">
+                  <label for="posicion"> Posición: </label>
+                  <select name="regPosicion" class="form-control" required autocomplete="off">
+                    <option value="" id="selectPosicionDesignacion"></option>
+                    
+                    <?php
+
+                    $campo = null;
+                    $valor = null;
+                    $mostrarPosiciones = ctrPosicion::ctrMostrarPosicion($campo, $valor);
+
+                    foreach ($mostrarPosiciones as $key => $value):
+                      echo '<option value='.$value["Id"].'>'.$value["Nombre"].'</option>';
+                    endforeach;
+
+                    ?>
+                                       
+                  </select>
                 </div>
               </div>
               
@@ -339,7 +354,7 @@
                 
                   <label for="departamento"> Departamento: </label>             
                   <select name="regDepartamento" class="form-control" required autocomplete="off">
-                      <option value="" id="selectDepartamento"></option>
+                      <option value="" id="selectDepartamentoDesignacion"></option>
                     <?php
 
                       $campo = null;
@@ -380,7 +395,7 @@
 
         <div class="modal-footer">
           <button type="reset" class="btn btn-secondary">Limpiar registro</button>
-          <button type="submit" class="btn btn-primary" name="actualizarDesignacion">Guardar registro</button>
+          <button type="submit" class="btn btn-primary" name="actualizarDesignacion">Actualizar registro</button>
         </div>
 
          <?php

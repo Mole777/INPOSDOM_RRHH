@@ -79,7 +79,7 @@ class ctrDesignacion{
 		return $respuesta;
 	}
 
-	static public function ctrEditarDesignacion()
+	public function ctrEditarDesignacion()
 	{
 		if (isset($_POST["actualizarDesignacion"])) 
 		{
@@ -88,29 +88,27 @@ class ctrDesignacion{
 			{
 					
 				if (Validaciones::soloLetras($_POST["regNombre"]) && 
-					Validaciones::soloLetras($_POST["regApellido"]) &&
-					Validaciones::soloLetras($_POST["regPosicion"]) && 
-					Validaciones::soloNumeros($_POST["regCedula"]) &&
-					Validaciones::soloNumeros($_POST["regTelefono"]) &&
-					Validaciones::soloNumeros($_POST["regSalario"]) &&
-				    Validaciones::formatearFechas(str_replace("-", "", $_POST["regFechaIngreso"]))) {
-				
-					$tabla = "designaciones";
-				
-					$datos = array('id' => $_POST["idDesignacion"],
-								   'nombre' => $_POST["regNombre"],
-							  	   'apellido' => $_POST["regApellido"],
-							  	   'cedula' => $_POST["regCedula"],
-							  	   'telefono' => $_POST["regTelefono"],
-							  	   'direccion' => $_POST["regDireccion"],
-							  	   'correo' => $_POST["regCorreo"],
-							  	   'salario' => $_POST["regSalario"],
-							  	   'posicion' => $_POST["regPosicion"],
-							  	   'fecha' => $_POST["regFechaIngreso"],
-							  	   'departamento' => $_POST["regDepartamento"],
-							  	   'usuario' => $_SESSION["UsuarioID"]
-							  	  
-							);
+						Validaciones::soloLetras($_POST["regApellido"]) &&
+						Validaciones::soloNumeros($_POST["regCedula"]) &&
+						Validaciones::soloNumeros($_POST["regTelefono"]) &&
+					    Validaciones::formatearFechas($_POST["regFechaIngreso"])) {
+						$salario = str_replace(".00", "", $_POST["regSalario"]);
+						
+						$tabla = "designaciones";
+					
+						$datos = array('id' => $_POST["idDesignacion"],
+								       'nombre' => $_POST["regNombre"],
+									   'apellido' => $_POST["regApellido"],
+									   'cedula' => $_POST["regCedula"],
+									   'telefono' => $_POST["regTelefono"],
+									   'direccion' => $_POST["regDireccion"],
+									   'correo' => $_POST["regCorreo"],
+									   'salario' => $salario,
+									   'posicion' => $_POST["regPosicion"],
+									   'fecha' => $_POST["regFechaIngreso"],
+									   'departamento' => $_POST["regDepartamento"],
+									   'usuario' => $_SESSION["UsuarioID"]
+								);
 
 					$respuesta = mdlDesignacion::mdlEditarDesignacion($tabla, $datos);
 
@@ -121,7 +119,7 @@ class ctrDesignacion{
 								Swal.fire({
 								  icon: "success",
 								  title: "Se ha actualizado correctamente la designación",
-								  showConfirmButton: false,
+								  showConfirmButton: true,
 								  timer: 2100
 								}).then(function(result){
 
@@ -134,9 +132,6 @@ class ctrDesignacion{
 
 							</script>';
 
-					}else{
-
-						var_dump($respuesta);
 					}
 
 				}

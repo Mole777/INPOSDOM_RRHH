@@ -22,13 +22,13 @@
 									Swal.fire({
 									  icon: "success",
 									  title: "Se ha creado correctamente el departamento",
-									  showConfirmButton: true,
-									  timer: 2100
+									  showConfirmButton: true, 
 									}).then(function(result){
 
 										if(result.value){
 										
 											window.location = "departamentos";
+
 
 										}
 									});
