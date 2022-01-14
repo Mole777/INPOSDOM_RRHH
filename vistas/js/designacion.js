@@ -19,6 +19,7 @@ $(".tablaDesignacion").on("click", ".btnEditarDesignacion", function(){
     dataType: "json",
     success: function(respuesta){
 
+      console.log("respuesta", respuesta);
       $("#editarIdDesignacion").val(respuesta["Id"]);
       $("#editarNombreDesignacion").val(respuesta["Nombre"]);
       $("#editarApellidoDesignacion").val(respuesta["Apellido"]);
@@ -27,12 +28,12 @@ $(".tablaDesignacion").on("click", ".btnEditarDesignacion", function(){
       $("#editarCorreoDesignacion").val(respuesta["Correo"]);
       $("#editarDireccionDesignacion").val(respuesta["Direccion"]);
       $("#editarFechaIngresoDesignacion").val(respuesta["Fecha_Ingreso"]);
-      $("#editarPosicionDesignacion").val(respuesta["Posicion"]);
+      $("#editarPosicionDesignacion").val(respuesta["PosicionID"]);
       $("#editarSalarioDesignacion").val(respuesta["Salario"]);
 
-      $("#selectDepartamento").html(respuesta["Departamento"]);
-      $("#selectDepartamento").val(respuesta["DepartamentoID"]);
-      $("#selectDepartamento").attr("selected", true);
+      $("#selectDesignacion").html(respuesta["Designacion"]);
+      $("#selectDesignacion").val(respuesta["DesignacionID"]);
+      $("#selectDesignacion").attr("selected", true);
 
     }
     

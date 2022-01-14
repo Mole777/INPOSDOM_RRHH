@@ -14,7 +14,7 @@ class ctrUsuario{
 				$valor = $_POST["ingUsuario"];
 
 				$respuesta = mdlUsuario::mdlMostrarUsuario($tabla, $campo, $valor);			
-
+		
 
 				if ($respuesta["Usuario"] == $_POST["ingUsuario"] && $respuesta["Clave"] == $_POST["ingClave"] && $respuesta["Estado"] == "Activo") {
 					
@@ -23,6 +23,8 @@ class ctrUsuario{
 					$_SESSION["Apellido"] = $respuesta["Apellido"];
 					$_SESSION["Rol"] = $respuesta["Rol"];
 					$_SESSION["Departamento"] = $respuesta["Departamento"];
+					$_SESSION["UsuarioID"] = $respuesta["Id"];
+
 
 					echo '<script>
 

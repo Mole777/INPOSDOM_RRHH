@@ -6,7 +6,7 @@ class mdlDesignacion{
 	
 	static public function mdlCrearDesignacion($tabla, $datos)
 	{
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(Nombre, Apellido, Cedula, Telefono, Direccion, Correo, Salario, Posicion, Fecha_Ingreso, DepartamentoID) VALUES(:nombre, :apellido, :cedula, :telefono, :direccion, :correo, :salario, :posicion, :fecha, :departamento)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(Nombre, Apellido, Cedula, Telefono, Direccion, Correo, Salario, PosicionID, Fecha_Ingreso, DepartamentoID, UsuarioID) VALUES(:nombre, :apellido, :cedula, :telefono, :direccion, :correo, :salario, :posicion, :fecha, :departamento, :usuario)");
 
 		$stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt -> bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
@@ -15,20 +15,19 @@ class mdlDesignacion{
 		$stmt -> bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
 		$stmt -> bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
 		$stmt -> bindParam(":salario", $datos["salario"], PDO::PARAM_INT);
-		$stmt -> bindParam(":posicion", $datos["posicion"], PDO::PARAM_STR);
+		$stmt -> bindParam(":posicion", $datos["posicion"], PDO::PARAM_INT);
 		$stmt -> bindParam(":fecha", $datos["fecha"], PDO::PARAM_STR);
 		$stmt -> bindParam(":departamento", $datos["departamento"], PDO::PARAM_INT);
+		$stmt -> bindParam(":usuario", $datos["usuario"], PDO::PARAM_INT);
 
-		try {
+		if ($stmt->execute()) {
+			
+			return "ok";
+		}else{
 
-			$stmt->execute();
-
-			return true;
-
-		} catch (Exception $e) {
-
-			return $e;
+			return "Error";
 		}
+		
 
 		$stmt->close();
 		$stmt = null;
@@ -38,7 +37,7 @@ class mdlDesignacion{
 	{
 		if ($campo != null) {
 			
-			$stmt = Conexion::conectar()->prepare("SELECT des.Id AS Id, des.Nombre, des.Apellido, des.Cedula, des.Telefono, des.Direccion, des.Correo, des.Salario, des.Posicion, des.Fecha_Ingreso, dep.Nombre AS Departamento, dep.Id AS DepartamentoID FROM $tabla AS des INNER JOIN departamentos_inposdom AS dep ON des.DepartamentoID = dep.Id WHERE des.Id = :$campo");
+			$stmt = Conexion::conectar()->prepare("SELECT des.Id AS Id, des.Nombre, des.Apellido, des.Cedula, des.Telefono, des.Direccion, des.Correo, des.Salario, pos.Nombre AS Posicion, des.Fecha_Ingreso, dep.Nombre AS Departamento, dep.Id AS DepartamentoID FROM $tabla AS des INNER JOIN departamentos_inposdom AS dep ON des.DepartamentoID = dep.Id INNER JOIN posiciones AS pos ON des.PosicionID = pos.Id WHERE $campo = :$campo");
 
 			$stmt->bindParam(":".$campo, $valor, PDO::PARAM_STR);
 
@@ -54,7 +53,7 @@ class mdlDesignacion{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT des.Id, des.Nombre, des.Apellido, des.Cedula, des.Telefono, des.Direccion, des.Correo, des.Salario, des.Posicion, des.Fecha_Ingreso, dep.Nombre AS Departamento FROM $tabla AS des INNER JOIN departamentos_inposdom AS dep ON des.DepartamentoID = dep.Id ORDER BY des.Id asc");
+			$stmt = Conexion::conectar()->prepare("SELECT des.Id AS Id, des.Nombre, des.Apellido, des.Cedula, des.Telefono, des.Direccion, des.Correo, des.Salario, pos.Nombre AS Posicion, des.Fecha_Ingreso, dep.Nombre AS Departamento, dep.Id AS DepartamentoID FROM $tabla AS des INNER JOIN departamentos_inposdom AS dep ON des.DepartamentoID = dep.Id INNER JOIN posiciones AS pos ON des.PosicionID = pos.Id ORDER BY des.Id ASC");
 
 			if ($stmt ->execute()) {
 
@@ -76,28 +75,29 @@ class mdlDesignacion{
 
 	static public function mdlEditarDesignacion($tabla, $datos)
 		{
-			$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET Nombre = :nombre, Apellido = :apellido, Cedula = :cedula, Telefono = :telefono, Direccion = :direccion, Correo = :correo, Salario = :salario, Posicion = :posicion, Fecha_Ingreso = :fechaIngreso, DepartamentoID = :departamento WHERE Id = :id");
+			$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET Nombre = :nombre, Apellido = :apellido, Cedula = :cedula, Telefono = :telefono, Direccion = :direccion, Correo = :correo, Salario = :salario, Posicion = :posicion, Fecha_Ingreso = :fecha, DepartamentoID = :departamento, UsuarioID = :usuario WHERE Id = :id");
 			
-			$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
-			$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-			$stmt->bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
-			$stmt->bindParam(":cedula", $datos["cedula"], PDO::PARAM_STR);
-			$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
-			$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
-			$stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
-			$stmt->bindParam(":salario", $datos["salario"], PDO::PARAM_STR);
-			$stmt->bindParam(":posicion", $datos["posicion"], PDO::PARAM_STR);
-			$stmt->bindParam(":fechaIngreso", $datos["fecha"], PDO::PARAM_STR);
-			$stmt->bindParam(":departamento", $datos["departamento"], PDO::PARAM_INT);
+			$stmt -> bindParam(":id", $datos["id"], PDO::PARAM_INT);
+			$stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+			$stmt -> bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
+			$stmt -> bindParam(":cedula", $datos["cedula"], PDO::PARAM_INT);
+			$stmt -> bindParam(":telefono", $datos["telefono"], PDO::PARAM_INT);
+			$stmt -> bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
+			$stmt -> bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
+			$stmt -> bindParam(":salario", $datos["salario"], PDO::PARAM_INT);
+			$stmt -> bindParam(":posicion", $datos["posicion"], PDO::PARAM_INT);
+			$stmt -> bindParam(":fecha", $datos["fecha"], PDO::PARAM_STR);
+			$stmt -> bindParam(":departamento", $datos["departamento"], PDO::PARAM_INT);
+			$stmt -> bindParam(":usuario", $datos["usuario"], PDO::PARAM_INT);
 
 
 			if ($stmt->execute()) {
 
-				return true;
+				return "ok";
 
 			}else{
 
-				return false;
+				return "error";
 			}
 
 			$stmt->close();

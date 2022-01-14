@@ -66,6 +66,7 @@ session_start();
           if ($_GET["ruta"] == "designaciones" ||
               $_GET["ruta"] == "perfil" ||
               $_GET["ruta"] == "departamentos" ||
+              $_GET["ruta"] == "posiciones" ||
               $_GET["ruta"] == "salir"
               ) {
               
@@ -99,6 +100,7 @@ session_start();
   <!-- JS -->
   <script src="vistas/js/departamento.js"></script>
   <script src="vistas/js/designacion.js"></script>
+  <script src="vistas/js/posicion.js"></script>
   
     
   </body>

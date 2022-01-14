@@ -57,6 +57,18 @@
           </a>
 
         </li>
+
+        <li class="nav-item">
+
+          <a href="posiciones" class="nav-link">
+
+            <i class="nav-icon fas fa-sitemap"></i>
+
+            <p>Administrar Posiciones</p>
+          
+          </a>
+
+        </li>
     
       </ul>
       

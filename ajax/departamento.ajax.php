@@ -24,6 +24,7 @@ EDITAR DEPARTAMENTO
 =============================================*/	
 
 if (isset($_POST["idDepartamento"])) {
+	
 	$departamento = new ajaxDepartamento();
 	$departamento->idDepartamento=$_POST["idDepartamento"];
 	$departamento->ajaxEditarDepartamento();

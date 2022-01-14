@@ -15,11 +15,11 @@ class ctrDesignacion{
 					
 					if (Validaciones::soloLetras($_POST["regNombre"]) && 
 						Validaciones::soloLetras($_POST["regApellido"]) &&
-						Validaciones::soloLetras($_POST["regPosicion"]) && 
 						Validaciones::soloNumeros($_POST["regCedula"]) &&
 						Validaciones::soloNumeros($_POST["regTelefono"]) &&
 					    Validaciones::formatearFechas($_POST["regFechaIngreso"])) {
 						$salario = str_replace(".00", "", $_POST["regSalario"]);
+						
 						$tabla = "designaciones";
 					
 						$datos = array('nombre' => $_POST["regNombre"],
@@ -31,29 +31,35 @@ class ctrDesignacion{
 								  'salario' => $salario,
 								  'posicion' => $_POST["regPosicion"],
 								  'fecha' => $_POST["regFechaIngreso"],
-								  'departamento' => $_POST["regDepartamento"]
+								  'departamento' => $_POST["regDepartamento"],
+								  'usuario' => $_SESSION["UsuarioID"]
+
 								);
 
 						$respuesta = mdlDesignacion::mdlCrearDesignacion($tabla, $datos);
-
-						if ($respuesta) {
+																																									
+						if ($respuesta == "ok") {
 							
 							echo'<script>
 
-									Swal.fire({
+								Swal.fire({
 									  icon: "success",
-									  title: "Se ha creado correctamente la designación",
-									  showConfirmButton: false,
-									  timer: 2100
-									}).then(function(result){
+									  title: "La designación ha sido actualizada correctamente",
+									  showConfirmButton: true,
+									  confirmButtonText: "Cerrar"
+									  }).then(function(result){
+												if (result.value) {
 
-										if(result.value){
-										
-											window.location = "designaciones";
+												window.location = "designaciones";
 
-										}
+												}
+											})
 
-									</script>';
+								</script>';
+
+						}else{
+
+							var_dump($respuesta);
 
 						}
 					}
@@ -101,12 +107,14 @@ class ctrDesignacion{
 							  	   'salario' => $_POST["regSalario"],
 							  	   'posicion' => $_POST["regPosicion"],
 							  	   'fecha' => $_POST["regFechaIngreso"],
-							  	   'departamento' => $_POST["regDepartamento"]
+							  	   'departamento' => $_POST["regDepartamento"],
+							  	   'usuario' => $_SESSION["UsuarioID"]
+							  	  
 							);
 
 					$respuesta = mdlDesignacion::mdlEditarDesignacion($tabla, $datos);
 
-					if ($respuesta) {
+					if ($respuesta == "ok") {
 						
 						echo'<script>
 
@@ -126,6 +134,9 @@ class ctrDesignacion{
 
 							</script>';
 
+					}else{
+
+						var_dump($respuesta);
 					}
 
 				}

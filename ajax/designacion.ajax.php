@@ -19,18 +19,6 @@
 			
 		}
 
-		public function ajaxMostrarDesignaciones()
-		{
-
-			$campo = null;
-			$valor = null;
-
-			$respuesta = ctrDesignacion::ctrMostrarDesignacion($campo, $valor);
-
-			echo json_encode($respuesta);
-			
-		}
-
 	}
 
 
@@ -39,12 +27,5 @@
 		$editar = new ajaxDesignacion();
 		$editar->idDesignacion=$_POST["idDesignacion"];
 		$editar->ajaxEditarDesignacion();
-	
-	}
-
-	if (isset($_POST["idDesignaciones"])) {
-		
-		$editar = new ajaxDesignacion();
-		$editar->ajaxMostrarDesignaciones();
 	
 	}

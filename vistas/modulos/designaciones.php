@@ -153,14 +153,14 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="cedula"> Cédula(Sin guiones): </label>
-                  <input type="number" class="form-control" id="cedula" placeholder="Ingresar cédula" name="regCedula" required autocomplete="off">
+                  <input type="number" class="form-control" id="cedula" placeholder="Ingresar cédula" name="regCedula" required autocomplete="off" min="1" minlength="11" maxlength="11">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="telefono"> Teléfono: </label>
-                  <input type="number" class="form-control" id="telefono" placeholder="Ingresar teléfono" name="regTelefono" autocomplete="off">
+                  <input type="number" class="form-control" id="telefono" placeholder="Ingresar teléfono" name="regTelefono" autocomplete="off" min="1">
                 </div>
               </div>
 
@@ -181,7 +181,22 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="posicion"> Posición: </label>
-                  <input type="text" class="form-control" id="posicion" placeholder="Ingresar posición" name="regPosicion" required autocomplete="off">
+                  <select name="regPosicion" id="posicion" class="form-control" required autocomplete="off">
+                    <option value="">Seleccionar Posición</option>
+                    
+                    <?php
+
+                    $campo = null;
+                    $valor = null;
+                    $mostrarPosiciones = ctrPosicion::ctrMostrarPosicion($campo, $valor);
+
+                    foreach ($mostrarPosiciones as $key => $value):
+                      echo '<option value='.$value["Id"].'>'.$value["Nombre"].'</option>';
+                    endforeach;
+
+                    ?>
+                                       
+                  </select>
                 </div>
               </div>
               

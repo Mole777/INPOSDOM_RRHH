@@ -1,19 +1,20 @@
 <?php
 
-	class ctrDepartamento{
+	class ctrPosicion{
 
-		public function ctrCrearDepartamento()
+
+		public function ctrCrearPosicion()
 		{
 			if (isset($_POST["guardar"])) {
 				
 				if (isset($_POST["regNombre"])) {
 
 					if (Validaciones::soloLetras($_POST["regNombre"])) {
-						
-						$tabla = "departamentos_inposdom";
 
+						$tabla = "posiciones";
 						$datos = array('nombre' => $_POST["regNombre"]);
-						$respuesta = mdlDepartamento::mdlCrearDepartamento($tabla, $datos);
+						
+						$respuesta = mdlPosicion::mdlCrearPosicion($tabla, $datos);
 
 						if ($respuesta) {
 							
@@ -21,17 +22,18 @@
 
 									Swal.fire({
 									  icon: "success",
-									  title: "Se ha creado correctamente el departamento",
+									  title: "Se ha creado correctamente la posición",
 									  showConfirmButton: true,
 									  timer: 2100
 									}).then(function(result){
 
 										if(result.value){
 										
-											window.location = "departamentos";
+											window.location = "posiciones";
 
 										}
 									});
+								
 
 									</script>';
 
@@ -42,26 +44,26 @@
 			}
 		}
 
-		static public function ctrMostrarDepartamento($campo, $valor)
+		static public function ctrMostrarPosicion($campo, $valor)
 		{
-			$tabla = "departamentos_inposdom";
-
-			$respuesta = mdlDepartamento::mdlMostrarDepartamento($tabla, $campo, $valor);
+			$tabla = "posiciones";
+			$respuesta = mdlPosicion::mdlMostrarPosicion($tabla, $campo, $valor);
 
 			return $respuesta;
 		}
 
-		public function ctrEditarDepartamento()
+		public function ctrEditarPosicion()
 		{
 			if (isset($_POST["actualizar"])) {
 				
 				if (isset($_POST["regNombre"])) {
 					
-					$tabla = "departamentos_inposdom";
-					$datos = array('id' => $_POST["idDepartamento"],
+					$datos = array('id' => $_POST["idPosicion"],
 						'nombre' => $_POST["regNombre"]);
 
-					$respuesta = mdlDepartamento::mdlEditarDepartamento($tabla, $datos);
+					$tabla = "posiciones";
+
+					$respuesta = mdlPosicion::mdlEditarPosicion($tabla, $datos);
 
 					if($respuesta){
 
@@ -69,32 +71,33 @@
 
 					Swal.fire({
 						  type: "success",
-						  title: "El departamento ha sido actualizado correctamente",
+						  title: "La posición ha sido actualizada correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "departamentos";
+									window.location = "posiciones";
 
 									}
 								})
 
 					</script>';
 
-				}
+					}
 				}
 			}
 		}
 
-		public function ctrEliminarDepartamento()
+		public function ctrEliminarPosicion()
 		{
-			if (isset($_GET["idDepartamento"])) {
-				
-				$tabla = "departamentos_inposdom";
-				$datos = $_GET["idDepartamento"];
+			if (isset($_GET["idPosicion"])) {
 
-				$respuesta = mdlDepartamento::mdlEliminarDepartamento($tabla, $datos);
+				$datos = $_GET["idPosicion"];
+
+				$tabla = "posiciones";
+
+				$respuesta = mdlPosicion::mdlEliminarPosicion($tabla, $datos);
 
 				if($respuesta){
 
@@ -102,14 +105,14 @@
 
 					Swal.fire({
 						  type: "success",
-						  title: "El departamento ha sido borrado correctamente",
+						  title: "La posición ha sido borrado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar",
 						  closeOnConfirm: false
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "departamentos";
+									window.location = "posiciones";
 
 									}
 								})
