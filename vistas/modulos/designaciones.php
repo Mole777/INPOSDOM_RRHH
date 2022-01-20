@@ -65,32 +65,29 @@
 
                     foreach($mostrarDesignaciones as $key => $value ):
 
-                     
-                     echo '
+                    ?>
+
                       <tr>
-                        <td>'.$value["Id"].'</td>
-                        <td>'.$value["Nombre"].'</td>
-                        <td>'.$value["Apellido"].'</td>
-                        <td>'.$value["Cedula"].'</td>
-                        <td>'.$value["Telefono"].'</td>
-                        <td>'.$value["Posicion"].'</td>
-                        <td>'.$value["Departamento"].'</td>
-                        <td>$'.$value["Salario"].'</td>
-                        <td>'.$value["Fecha_Ingreso"].'</td>
+                        <td><?= $value["Id"]?></td>
+                        <td><?= $value["Nombre"]?></td>
+                        <td><?= $value["Apellido"]?></td>
+                        <td><?= $value["Cedula"]?></td>
+                        <td><?= $value["Telefono"]?></td>
+                        <td><?= $value["Posicion"]?></td>
+                        <td><?= $value["Departamento"]?></td>
+                        <td><?= $value["Salario"]?></td>
+                        <td><?= $value["Fecha_Ingreso"]?></td>
                         <td>
                           <div class="btn-group">
-                            <button class="btn btn-info btnEditarDesignacion" idDesignacion='.$value["Id"].' data-toggle="modal" data-target="#modalEditarDesignacion"><i class="fas fa-edit"></i></button>
-                            <button class="btn btn-danger btnEliminarDesignacion" idDesignacion='.$value["Id"].' ><i class="fas fa-trash-alt"></i></button>
+                            <button class="btn btn-info btnEditarDesignacion" idDesignacion="<?= $value["Id"]?>" data-toggle="modal" data-target="#modalEditarDesignacion"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger btnEliminarDesignacion" idDesignacion="<?= $value["Id"]?>" ><i class="fas fa-trash-alt"></i></button>
                           </div>
                         </td>
-                      </tr>';
+                      </tr>
 
+                  <?php
                     endforeach;
-
                   ?>
-
-                
-                  
 
                 </tbody>
 
@@ -191,9 +188,13 @@
                     $mostrarPosiciones = ctrPosicion::ctrMostrarPosicion($campo, $valor);
 
                     foreach ($mostrarPosiciones as $key => $value):
-                      echo '<option value='.$value["Id"].'>'.$value["Nombre"].'</option>';
-                    endforeach;
 
+                    ?>
+
+                    <option value="<?= $value["Id"] ?>"><?= $value["Nombre"] ?></option>
+                    
+                    <?php  
+                      endforeach;
                     ?>
                                        
                   </select>
@@ -213,10 +214,14 @@
                     $mostrarDepartamentos =ctrDepartamento::ctrMostrarDepartamento($campo, $valor);
 
                     foreach ($mostrarDepartamentos as $key => $value):
-                      echo '<option value='.$value["Id"].'>'.$value["Nombre"].'</option>';
-                    endforeach;
-
                     ?>
+
+                    <option value="<?= $value["Id"] ?>"><?= $value["Nombre"] ?></option>
+                    
+                    <?php  
+                      endforeach;
+                    ?>
+                    
                                        
                   </select>
                 </div>
@@ -339,10 +344,14 @@
                     $mostrarPosiciones = ctrPosicion::ctrMostrarPosicion($campo, $valor);
 
                     foreach ($mostrarPosiciones as $key => $value):
-                      echo '<option value='.$value["Id"].'>'.$value["Nombre"].'</option>';
-                    endforeach;
-
                     ?>
+                      
+                    <option value="<?= $value["Id"] ?>"><?= $value["Nombre"] ?></option>
+
+                    <?php  
+                      endforeach;
+                    ?>
+                   
                                        
                   </select>
                 </div>
@@ -363,12 +372,13 @@
                       $mostrarDepartamentos = ctrDepartamento::ctrMostrarDepartamento($campo, $valor);
 
                       foreach ($mostrarDepartamentos as $key => $value):
+                    ?>  
                         
-                        echo '<option value='.$value["Id"].'>'.$value["Nombre"].'</option>';
-                      
-                      endforeach;
+                      <option value="<?= $value["Id"] ?>"><?= $value["Nombre"] ?></option>
 
-                    ?>                
+                    <?php  
+                      endforeach;
+                    ?>     
                   </select>
 
                 </div>

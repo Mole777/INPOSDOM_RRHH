@@ -75,21 +75,26 @@
 
                     foreach ($mostrarDepartamentos as $key => $value):
 
-                      echo '
+                    ?>
+                   
                       <tr>
-                        <td>'.($key+1).'</td>
-                        <td>'.$value["Nombre"].'</td>
+                        <td><?= ($key+1)?></td>
+                        <td><?= $value["Nombre"]?></td>
                         <td>
                           <div class="btn-group">
-                            <button class="btn btn-default btnEditarDepartamento" idDepartamento='.$value["Id"].' data-toggle="modal" data-target="#modalEditarDepartamento"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-default btnEditarDepartamento" idDepartamento="<?= $value["Id"]?>" data-toggle="modal" data-target="#modalEditarDepartamento"><i class="fas fa-edit"></i></button>
                             
-                            <button class="btn btn-danger btnEliminarDepartamento" idDepartamento='.$value["Id"].'><i class="fas fa-trash-alt"></i></button>
+                            <button class="btn btn-danger btnEliminarDepartamento" idDepartamento="<?= $value["Id"]?>"><i class="fas fa-trash-alt"></i></button>
                           </div>
                         </td>
-                      </tr>';
-
+                      </tr>
+                    
+                    <?php
+                    
                     endforeach;
-                  ?>
+
+                    ?>
+                  
                 </tbody>
               </table>
 

@@ -76,10 +76,7 @@
                   foreach ($mostrarUsuarios as $key => $value):
 
                 ?>
-                 
 
-
-               
                 <tr>
                   <td><?= ($key+1)?></td>
                   <td><?= $value["Nombre"]?></td>
@@ -104,6 +101,7 @@
                 <?php
                    endforeach;
                 ?>
+                
               </tbody>
             </table>
 
