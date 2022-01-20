@@ -23,17 +23,16 @@
 									Swal.fire({
 									  icon: "success",
 									  title: "Se ha creado correctamente la posición",
-									  showConfirmButton: true,
-									  timer: 2100
+									  showConfirmButton: true, 
 									}).then(function(result){
 
 										if(result.value){
 										
-											window.location = "posiciones";
+											window.location = "departamentos";
+
 
 										}
 									});
-								
 
 									</script>';
 
@@ -65,26 +64,27 @@
 
 					$respuesta = mdlPosicion::mdlEditarPosicion($tabla, $datos);
 
-					if($respuesta){
+					if ($respuesta) {
+							
+							echo'<script>
 
-					echo'<script>
+									Swal.fire({
+									  icon: "success",
+									  title: "Se ha actualizado correctamente la posición",
+									  showConfirmButton: true, 
+									}).then(function(result){
 
-					Swal.fire({
-						  type: "success",
-						  title: "La posición ha sido actualizada correctamente",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-									if (result.value) {
+										if(result.value){
+										
+											window.location = "posiciones";
 
-									window.location = "posiciones";
 
-									}
-								})
+										}
+									});
 
-					</script>';
+									</script>';
 
-					}
+						}
 				}
 			}
 		}

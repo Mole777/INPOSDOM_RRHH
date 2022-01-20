@@ -41,7 +41,7 @@
 
                 <thead>
                   <tr>
-                    <th>No.</th>
+                    <th>Código</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Cédula</th>
@@ -68,7 +68,7 @@
                      
                      echo '
                       <tr>
-                        <td>'.($key+1).'</td>
+                        <td>'.$value["Id"].'</td>
                         <td>'.$value["Nombre"].'</td>
                         <td>'.$value["Apellido"].'</td>
                         <td>'.$value["Cedula"].'</td>

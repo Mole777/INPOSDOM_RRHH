@@ -45,8 +45,7 @@ class ctrDesignacion{
 								Swal.fire({
 									  icon: "success",
 									  title: "La designación ha sido actualizada correctamente",
-									  showConfirmButton: true,
-									  confirmButtonText: "Cerrar"
+									  showConfirmButton: true
 									  }).then(function(result){
 												if (result.value) {
 
@@ -56,10 +55,6 @@ class ctrDesignacion{
 											})
 
 								</script>';
-
-						}else{
-
-							var_dump($respuesta);
 
 						}
 					}
