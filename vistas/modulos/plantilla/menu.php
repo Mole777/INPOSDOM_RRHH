@@ -46,7 +46,7 @@
 
         </li>
 
-        <li class="nav-item has-treeview menu-open">
+        <li class="nav-item has-treeview menu-close">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
             <p>

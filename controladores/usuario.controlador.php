@@ -47,9 +47,13 @@ class ctrUsuario{
 
 	}
 
-	public function ctrMostrarUsuarios()
+	static public function ctrMostrarUsuarios($campo, $valor)
 	{
-		
+		$tabla = "Usuarios_rrhh";
+
+		$respuesta = mdlUsuario::mdlMostrarUsuario($tabla, $campo, $valor);
+
+		return $respuesta;
 	}
 
 	public function ctrEditarUsuario()

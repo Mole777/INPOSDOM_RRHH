@@ -65,26 +65,45 @@
                 </tr>
               </thead>
               <tbody>
+
+                <?php
+
+                  $campo = null;
+                  $valor = null;
+
+                  $mostrarUsuarios = ctrUsuario::ctrMostrarUsuarios($campo, $valor);
+
+                  foreach ($mostrarUsuarios as $key => $value):
+
+                ?>
+                 
+
+
+               
                 <tr>
-                  <td>1</td>
-                  <td>Melquisedec</td>
-                  <td>Sarante</td>
-                  <td>melquisedec</td>
+                  <td><?= ($key+1)?></td>
+                  <td><?= $value["Nombre"]?></td>
+                  <td><?= $value["Apellido"]?></td>
+                  <td><?= $value["Usuario"]?></td>
                   <td>
                     <div class="form-group">
-                    <div class="custom-control custom-switch custom-switch-off-default custom-switch-on-success">
-                      <input type="checkbox" class="custom-control-input" id="customSwitch3">
-                      <label class="custom-control-label" for="customSwitch3"></label>
+                      <div class="custom-control custom-switch custom-switch-off-default custom-switch-on-success">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch<?= $value["Id"]?>">
+                        <label class="custom-control-label" for="customSwitch<?= $value["Id"]?>"></label>
+                      </div>
                     </div>
-                  </div>
                   </td>
                   <td>
                     <div class="btn-group">
-                      <button class="btn btn-info btnEditarDesignacion" idDesignacion='.$value["Id"].' data-toggle="modal" data-target="#modalEditarDesignacion"><i class="fas fa-edit"></i></button>
-                      <button class="btn btn-danger btnEliminarDesignacion" idDesignacion='.$value["Id"].' ><i class="fas fa-trash-alt"></i></button>
+                      <button class="btn btn-info btnEditarDesignacion" idDesignacion="<?= $value["Id"]?>" data-toggle="modal" data-target="#modalEditarDesignacion"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-danger btnEliminarDesignacion" idDesignacion="<?= $value["Id"]?>" ><i class="fas fa-trash-alt"></i></button>
                     </div>
                   </td>
                 </tr>
+
+                <?php
+                   endforeach;
+                ?>
               </tbody>
             </table>
 
