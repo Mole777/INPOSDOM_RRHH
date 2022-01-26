@@ -1,6 +1,6 @@
 <div class="login-box">
   <div class="login-logo">
-    <a href="index2.html"><b>INPOSDOM</b></a>
+    <a href="#"><b>INPOSDOM</b></a>
   </div>
 
   <div class="card card-outline card-primary">

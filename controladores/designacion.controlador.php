@@ -44,7 +44,7 @@ class ctrDesignacion{
 
 								Swal.fire({
 									  icon: "success",
-									  title: "La designación ha sido actualizada correctamente",
+									  title: "La designación ha sido creada correctamente",
 									  showConfirmButton: true
 									  }).then(function(result){
 												if (result.value) {
@@ -114,8 +114,7 @@ class ctrDesignacion{
 								Swal.fire({
 								  icon: "success",
 								  title: "Se ha actualizado correctamente la designación",
-								  showConfirmButton: true,
-								  timer: 2100
+								  showConfirmButton: true,	
 								}).then(function(result){
 
 									if(result.value){

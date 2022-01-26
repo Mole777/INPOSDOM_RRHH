@@ -15,7 +15,7 @@
 						$datos = array('nombre' => $_POST["regNombre"]);
 						$respuesta = mdlDepartamento::mdlCrearDepartamento($tabla, $datos);
 
-						if ($respuesta) {
+						if ($respuesta == "ok") {
 							
 							echo'<script>
 

@@ -14,7 +14,7 @@ class mdlUsuario{
 
 		if ($campo != "") {
 			
-			$stmt = Conexion::conectar()->prepare("SELECT usu.Id AS Id, usu.Nombre, usu.Apellido, usu.Usuario, usu.Clave, est.Tipo AS Estado, rol.Nombre AS Rol, dep.Nombre AS Departamento FROM usuarios_rrhh AS usu 
+			$stmt = Conexion::conectar()->prepare("SELECT usu.Id AS Id, usu.Nombre, usu.Apellido, usu.Usuario, usu.Clave, usu.EstadoID, est.Tipo AS Estado, rol.Nombre AS Rol, dep.Nombre AS Departamento FROM usuarios_rrhh AS usu 
 			INNER JOIN estado_rrhh AS est ON usu.EstadoID = est.Id 
 			INNER JOIN roles_rrhh AS rol ON usu.RolID = rol.Id
 			INNER JOIN departamentos_inposdom AS dep ON rol.DepartamentoID = dep.Id
@@ -28,7 +28,7 @@ class mdlUsuario{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT usu.Id AS Id, usu.Nombre, usu.Apellido, usu.Usuario, usu.Clave, est.Tipo AS Estado, rol.Nombre AS Rol, dep.Nombre AS Departamento FROM usuarios_rrhh AS usu 
+			$stmt = Conexion::conectar()->prepare("SELECT usu.Id AS Id, usu.Nombre, usu.Apellido, usu.Usuario, usu.Clave, usu.EstadoID, est.Tipo AS Estado, rol.Nombre AS Rol, dep.Nombre AS Departamento FROM usuarios_rrhh AS usu 
 			INNER JOIN estado_rrhh AS est ON usu.EstadoID = est.Id 
 			INNER JOIN roles_rrhh AS rol ON usu.RolID = rol.Id
 			INNER JOIN departamentos_inposdom AS dep ON rol.DepartamentoID = dep.Id");

@@ -4,11 +4,11 @@
       <div class="row">
         <div class="col-sm-6">
           <h1>Reclutamiento y Selección de Personal</h1>
-          <span class="muted">Designaciones</span>
+          <span class="muted">Acción de Personal</span>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item active">Designación</li>
+            <li class="breadcrumb-item active">Reclutamiento y Selección de Personal</li>
           </ol>
         </div>
       </div>
@@ -19,7 +19,7 @@
 
     <div class="card card-outline card-primary">
       <div class="card-header">
-        <h3 class="card-title"><button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearDesignacion">Crear Designación</button></h3>
+        <h3 class="card-title"><button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearDesignacion">Crear Perfil</button></h3>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -61,9 +61,9 @@
                     $campo = null;
                     $valor = null;
 
-                    $mostrarDesignaciones = ctrDesignacion::ctrMostrarDesignacion($campo, $valor);
+                    $mostrarPerfiles = ctrDesignacion::ctrMostrarDesignacion($campo, $valor);
 
-                    foreach($mostrarDesignaciones as $key => $value ):
+                    foreach($mostrarPerfiles as $key => $value ):
 
                     ?>
 
@@ -227,7 +227,22 @@
                 </div>
               </div>
 
-              <div class="col-12">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="departamento"> Acción de Personal: </label>
+                  <select id="departamento" class="form-control" autocomplete="off">
+                    <option value="">Seleccionar departamento</option>
+                    <option value="">Designación</option>
+                    <option value="">Traslados</option>
+                    <option value="">Reajustes Salarial</option>
+                    <option value="">Ascensos</option>
+                    
+                                       
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-6">
                 <div class="form-group">
                   <label for="fechaIngreso"> Fecha de Ingreso: </label>
                   <input type="date" class="form-control" id="fechaIngreso" name="regFechaIngreso" required autocomplete="off">

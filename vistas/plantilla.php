@@ -103,6 +103,7 @@ session_start();
   <script src="vistas/js/departamento.js"></script>
   <script src="vistas/js/designacion.js"></script>
   <script src="vistas/js/posicion.js"></script>
+  <script src="vistas/js/usuario.js"></script>
   
     
   </body>

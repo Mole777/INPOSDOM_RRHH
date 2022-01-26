@@ -8,7 +8,6 @@
     <span class="brand-text font-weight-light"><b>RRHH</b></span>
   
   </a>
-
   
   <div class="sidebar">
   
@@ -70,7 +69,7 @@
             <li class="nav-item">
               <a href="designaciones" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Designaciones</p>
+                <p>Acción de Personal</p>
               </a>
             </li>
           </ul>
