@@ -63,12 +63,13 @@ session_start();
 
         if (isset($_GET["ruta"])) {
         
-          if ($_GET["ruta"] == "designaciones" ||
+          if ($_GET["ruta"] == "accion-personal" ||
               $_GET["ruta"] == "perfil" ||
               $_GET["ruta"] == "departamentos" ||
               $_GET["ruta"] == "posiciones" ||
               $_GET["ruta"] == "administrador-usuarios" ||
               $_GET["ruta"] == "inicio" ||
+              $_GET["ruta"] == "perfil-personal" ||
               $_GET["ruta"] == "salir"
               ) {
               
@@ -76,13 +77,13 @@ session_start();
 
             }else{
 
-              include_once "vistas/modulos/designaciones.php";
+              include_once "vistas/modulos/inicio.php";
 
             }
 
         }else{
 
-        include_once "vistas/modulos/designaciones.php";
+        include_once "vistas/modulos/accion-personal.php";
         }
 
         include_once "vistas/modulos/plantilla/footer.php";
@@ -103,7 +104,7 @@ session_start();
   <script src="vistas/js/departamento.js"></script>
   <script src="vistas/js/designacion.js"></script>
   <script src="vistas/js/posicion.js"></script>
-  <script src="vistas/js/usuario.js"></script>
+  <script src="vistas/js/perfil-personal.js"></script>
   
     
   </body>

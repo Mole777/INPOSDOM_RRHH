@@ -79,6 +79,7 @@
                         <td><?= $value["Fecha_Ingreso"]?></td>
                         <td>
                           <div class="btn-group">
+                            <button class="btn btn-default btnMostrarDesignacion" idDesignacion="<?= $value["Id"]?>" ><i class="fas fa-search"></i></button>
                             <button class="btn btn-info btnEditarDesignacion" idDesignacion="<?= $value["Id"]?>" data-toggle="modal" data-target="#modalEditarDesignacion"><i class="fas fa-edit"></i></button>
                             <button class="btn btn-danger btnEliminarDesignacion" idDesignacion="<?= $value["Id"]?>" ><i class="fas fa-trash-alt"></i></button>
                           </div>

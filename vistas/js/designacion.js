@@ -71,3 +71,4 @@ $(".tablaDesignacion").on("click", ".btnEliminarDesignacion", function(){
 		  }
 	})
 });
+
