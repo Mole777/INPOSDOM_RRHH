@@ -19,7 +19,7 @@
 
     <div class="card card-outline card-primary">
       <div class="card-header">
-        <h3 class="card-title"><button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearDesignacion">Crear Perfil</button></h3>
+        <h3 class="card-title"><button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearPersonal">Crear Perfil</button></h3>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -37,7 +37,7 @@
 
             <div class="col-12" id="example1_wrapper">
 
-              <table class="table table-hover table-striped tableData table-bordered table-sm table-condensed tablaDesignacion">
+              <table class="table table-hover table-striped tableData table-bordered table-sm table-condensed tablaPersonal">
 
                 <thead>
                   <tr>
@@ -61,7 +61,7 @@
                     $campo = null;
                     $valor = null;
 
-                    $mostrarPerfiles = ctrDesignacion::ctrMostrarDesignacion($campo, $valor);
+                    $mostrarPerfiles = ctrPersonal::ctrMostrarPersonal($campo, $valor);
 
                     foreach($mostrarPerfiles as $key => $value ):
 
@@ -79,9 +79,9 @@
                         <td><?= $value["Fecha_Ingreso"]?></td>
                         <td>
                           <div class="btn-group">
-                            <button class="btn btn-default btnMostrarDesignacion" idDesignacion="<?= $value["Id"]?>" ><i class="fas fa-search"></i></button>
-                            <button class="btn btn-info btnEditarDesignacion" idDesignacion="<?= $value["Id"]?>" data-toggle="modal" data-target="#modalEditarDesignacion"><i class="fas fa-edit"></i></button>
-                            <button class="btn btn-danger btnEliminarDesignacion" idDesignacion="<?= $value["Id"]?>" ><i class="fas fa-trash-alt"></i></button>
+                            <button class="btn btn-default btnMostrarPersonal" idPersonal="<?= $value["Id"]?>" ><i class="fas fa-search"></i></button>
+                            <button class="btn btn-info btnEditarPersonal" idPersonal="<?= $value["Id"]?>" data-toggle="modal" data-target="#modalEditarPersonal"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger btnEliminarPersonal" idPersonal="<?= $value["Id"]?>" ><i class="fas fa-trash-alt"></i></button>
                           </div>
                         </td>
                       </tr>
@@ -108,9 +108,9 @@
 
 </div>
 
-<!-- MODAL CREAR DESIGNACION -->
+<!-- MODAL CREAR PERSONAL -->
 
-<div class="modal fade" id="modalCrearDesignacion" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="crearDesignacionLabel" aria-hidden="true">
+<div class="modal fade" id="modalCrearPersonal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="crearPersonalLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
 
@@ -118,7 +118,7 @@
     
       <div class="modal-header">
     
-        <h5 class="modal-title" id="crearDesignacionLabel">Crear designación</h5>
+        <h5 class="modal-title" id="crearPersonalLabel">Crear perfil</h5>
     
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     
@@ -155,9 +155,18 @@
                 </div>
               </div>
 
-              <div class="col-6">
+              <div class="col-3">
+                <label for="sexo">Sexo:</label>
+                <select name="regSexo" id="sexo" class="form-control" required>
+                  <option value="">Seleccionar Sexo</option>
+                  <option value="M">Masculino</option>
+                  <option value="F">Femenino</option>
+                </select>
+              </div>
+
+              <div class="col-3">
                 <div class="form-group">
-                  <label for="telefono"> Teléfono: </label>
+                  <label for="sexo"> Teléfono: </label>
                   <input type="number" class="form-control" id="telefono" placeholder="Ingresar teléfono" name="regTelefono" autocomplete="off" min="1">
                 </div>
               </div>
@@ -230,15 +239,9 @@
 
               <div class="col-6">
                 <div class="form-group">
-                  <label for="departamento"> Acción de Personal: </label>
-                  <select id="departamento" class="form-control" autocomplete="off">
-                    <option value="">Seleccionar departamento</option>
+                  <label for="accion_personal"> Acción de Personal: </label>
+                  <select id="accion_personal" class="form-control" autocomplete="off" disabled>
                     <option value="">Designación</option>
-                    <option value="">Traslados</option>
-                    <option value="">Reajustes Salarial</option>
-                    <option value="">Ascensos</option>
-                    
-                                       
                   </select>
                 </div>
               </div>
@@ -268,8 +271,8 @@
 
          <?php
 
-          $crearDesignacion = new ctrDesignacion();
-          $crearDesignacion -> ctrCrearDesignacion();
+          $crearPersonal = new ctrPersonal();
+          $crearPersonal -> ctrCrearPersonal();
 
         ?>
       </form>
@@ -278,9 +281,9 @@
 </div>
 
 
-<!-- MODAL EDITAR DESIGNACION -->
+<!-- MODAL EDITAR PERSONAL -->
 
-<div class="modal fade" id="modalEditarDesignacion" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="editarDesignacionLabel" aria-hidden="true">
+<div class="modal fade" id="modalEditarPersonal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="editarPersonalLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
 
@@ -288,7 +291,7 @@
     
       <div class="modal-header">
     
-        <h5 class="modal-title" id="editarDesignacionLabel">Editar designación</h5>
+        <h5 class="modal-title" id="editarPersonalLabel">Editar perfil</h5>
     
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     
@@ -307,43 +310,52 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="nombre"> Nombre: </label>
-                  <input type="hidden" id="editarIdDesignacion" name="idDesignacion">
-                  <input type="text" class="form-control" id="editarNombreDesignacion" placeholder="Ingresar nombre" name="regNombre" required autocomplete="off">
+                  <input type="hidden" id="editarIdPersonal" name="idPersonal">
+                  <input type="text" class="form-control" id="editarNombrePersonal" placeholder="Ingresar nombre" name="regNombre" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
-                  <label for="editarApellidoDesignacion"> Apellido: </label>
-                  <input type="text" class="form-control" id="editarApellidoDesignacion" placeholder="Ingresar apellido" name="regApellido" required autocomplete="off">
+                  <label for="editarApellidoPersonal"> Apellido: </label>
+                  <input type="text" class="form-control" id="editarApellidoPersonal" placeholder="Ingresar apellido" name="regApellido" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
-                  <label for="editarCedulaDesignacion"> Cédula(Sin guiones): </label>
-                  <input type="number" class="form-control" id="editarCedulaDesignacion" placeholder="Ingresar cédula" name="regCedula" required autocomplete="off">
+                  <label for="editarCedulaPersonal"> Cédula(Sin guiones): </label>
+                  <input type="number" class="form-control" id="editarCedulaPersonal" placeholder="Ingresar cédula" name="regCedula" required autocomplete="off">
+                </div>
+              </div>
+
+              <div class="col-3">
+                <label for="editarSexoPersonal">Sexo:</label>
+                <select name="regSexo" class="form-control" required>
+                  <option value="" id="editarSexoPersonal"></option>
+                  <option value="M">Masculino</option>
+                  <option value="F">Femenino</option>
+                </select>
+              </div>
+
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="editarTelefonoPersonal"> Teléfono: </label>
+                  <input type="number" class="form-control" id="editarTelefonoPersonal" placeholder="Ingresar teléfono" name="regTelefono" autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
-                  <label for="editarTelefonoDesignacion"> Teléfono: </label>
-                  <input type="number" class="form-control" id="editarTelefonoDesignacion" placeholder="Ingresar teléfono" name="regTelefono" autocomplete="off">
+                  <label for="editarCorreoPersonal"> Correo: </label>
+                  <input type="email" class="form-control" id="editarCorreoPersonal" placeholder="Ingresar correo" name="regCorreo" autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
-                  <label for="editarCorreoDesignacion"> Correo: </label>
-                  <input type="email" class="form-control" id="editarCorreoDesignacion" placeholder="Ingresar correo" name="regCorreo" autocomplete="off">
-                </div>
-              </div>
-
-              <div class="col-6">
-                <div class="form-group">
-                  <label for="editarSalarioDesignacion"> Salario: </label>
-                  <input type="text" class="form-control" id="editarSalarioDesignacion" placeholder="Ingresar salario" name="regSalario" required autocomplete="off">
+                  <label for="editarSalarioPersonal"> Salario: </label>
+                  <input type="text" class="form-control" id="editarSalarioPersonal" placeholder="Ingresar salario" name="regSalario" required autocomplete="off">
                 </div>
               </div>
 
@@ -351,7 +363,7 @@
                 <div class="form-group">
                   <label for="posicion"> Posición: </label>
                   <select name="regPosicion" class="form-control" required autocomplete="off">
-                    <option value="" id="selectPosicionDesignacion"></option>
+                    <option value="" id="selectPosicionPersonal"></option>
                     
                     <?php
 
@@ -362,7 +374,7 @@
                     foreach ($mostrarPosiciones as $key => $value):
                     ?>
                       
-                    <option value="<?= $value["Id"] ?>"><?= $value["Nombre"] ?></option>
+                    <option value="<?= $value["Id"] ?>" ><?= $value["Nombre"] ?></option>
 
                     <?php  
                       endforeach;
@@ -379,7 +391,8 @@
                 
                   <label for="departamento"> Departamento: </label>             
                   <select name="regDepartamento" class="form-control" required autocomplete="off">
-                      <option value="" id="selectDepartamentoDesignacion"></option>
+
+                      <option value="" id="selectDepartamentoPersonal"></option>
                     <?php
 
                       $campo = null;
@@ -403,15 +416,15 @@
 
               <div class="col-12">
                 <div class="form-group">
-                  <label for="editarFechaIngresoDesignacion"> Fecha de Ingreso: </label>
-                  <input type="date" class="form-control" id="editarFechaIngresoDesignacion" name="regFechaIngreso" required autocomplete="off">
+                  <label for="editarFechaIngresoPersonal"> Fecha de Ingreso: </label>
+                  <input type="date" class="form-control" id="editarFechaIngresoPersonal" name="regFechaIngreso" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-12">
                 <div class="form-group">
-                  <label for="editarDireccionDesignacion"> Dirección: </label>
-                  <textarea id="editarDireccionDesignacion" cols="30" rows="2" class="form-control" placeholder="Ingresar dirección" name="regDireccion" autocomplete="off"></textarea> 
+                  <label for="editarDireccionPersonal"> Dirección: </label>
+                  <textarea id="editarDireccionPersonal" cols="30" rows="2" class="form-control" placeholder="Ingresar dirección" name="regDireccion" autocomplete="off"></textarea> 
                 </div>
               </div>
 
@@ -421,13 +434,13 @@
 
         <div class="modal-footer">
           <button type="reset" class="btn btn-secondary">Limpiar registro</button>
-          <button type="submit" class="btn btn-primary" name="actualizarDesignacion">Actualizar registro</button>
+          <button type="submit" class="btn btn-primary" name="actualizarPersonal">Actualizar registro</button>
         </div>
 
          <?php
 
-          $editarDesignacion = new ctrDesignacion();
-          $editarDesignacion -> ctrEditarDesignacion();
+          $editarPersonal = new ctrPersonal();
+          $editarPersonal -> ctrEditarPersonal();
 
         ?>
 
@@ -441,7 +454,7 @@
 
 <?php
   
-  $eliminarDesignacion = new ctrDesignacion();
-  $eliminarDesignacion->ctrEliminarDesignacion();
+  $eliminarPersonal = new ctrPersonal();
+  $eliminarPersonal->ctrEliminarPersonal();
 
 ?>

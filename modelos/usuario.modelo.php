@@ -4,9 +4,27 @@ require_once "conexion.php";
 
 class mdlUsuario{
 	
-	static public function mdlCrearUsuario()
+	static public function mdlCrearUsuario($tabla, $datos)
 	{
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(Nombre, Apellido, Usuario, Clave, RolID, EstadoID) VALUES(:nombre, :apellido, :usuario, :clave, :rol, :estado)");
 
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
+		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
+		$stmt->bindParma(":clave", $datos["clave"], PDO::PARAM_STR);
+		$stmt->bindParam(":rol", $datos["rol"], PDO::PARAM_INT);
+		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_INT);
+
+		if ($stmt->execute()) {
+			return "ok";
+
+		}else{
+			
+			return "error";
+		}
+
+		$stmt->close();
+		$stmt = null;
 	}
 
 	static public function mdlMostrarUsuario($tabla, $campo, $valor)

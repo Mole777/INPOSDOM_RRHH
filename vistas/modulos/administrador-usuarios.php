@@ -9,6 +9,7 @@
         <div class="col-sm-6">
 
           <h1>Administrador</h1>
+
           <span class="muted">Usuarios</span>
 
         </div>
@@ -185,6 +186,23 @@
                   <label for="regRol">Rol:</label>
                   <select name="regRol" id="regRol" class="form-control" placeholder="Seleccione el rol">
                     <option>Seleccionar rol</option>
+                    <?php 
+
+                      $campo = null;
+                      $valor = null;
+
+                      $mostrarRoles = ctrRol::ctrMostrarRoles($campo, $valor);
+
+                      foreach ($mostrarRoles as $key => $value): 
+                    ?>
+                      
+                      <option value="<?= $value["Id"] ?>"><?= $value["Nombre"] ?></option>
+
+
+                    <?php
+                      endforeach;
+                    ?>
+                    
                   </select>
                 </div>
               </div>
@@ -192,8 +210,8 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="regEstado">Estado:</label>
-                  <select name="regEstado" id="regEstado" class="form-control">
-                    <option>Seleccionar estado</option>
+                  <select name="regEstado" id="regEstado" class="form-control" disabled>
+                    <option>Activo</option>
                   </select>
                 </div>
               </div>

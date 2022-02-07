@@ -2,28 +2,30 @@
 
 require_once "validaciones.php";
 
-class ctrDesignacion{
+class ctrPersonal{
 	
-	public function ctrCrearDesignacion()
+	public function ctrCrearPersonal()
 	{
 		
 		if (isset($_POST["guardar"])) 
 		{
 			
-			if(isset($_POST["regNombre"]) && isset($_POST["regApellido"]) && isset($_POST["regCedula"]) && isset($_POST["regSalario"]) && isset($_POST["regPosicion"]) && isset($_POST["regFechaIngreso"]) && isset($_POST["regDepartamento"]))
+			if(isset($_POST["regNombre"]) && isset($_POST["regApellido"]) && isset($_POST["regCedula"]) && isset($_POST["regSalario"]) && isset($_POST["regPosicion"]) && isset($_POST["regFechaIngreso"]) && isset($_POST["regDepartamento"]) && isset($_POST["regSexo"]))
 			{
 					
 					if (Validaciones::soloLetras($_POST["regNombre"]) && 
 						Validaciones::soloLetras($_POST["regApellido"]) &&
 						Validaciones::soloNumeros($_POST["regCedula"]) &&
 						Validaciones::soloNumeros($_POST["regTelefono"]) &&
+						Validaciones::soloLetras($_POST["regSexo"]) &&
 					    Validaciones::formatearFechas($_POST["regFechaIngreso"])) {
 						$salario = str_replace(".00", "", $_POST["regSalario"]);
 						
-						$tabla = "designaciones";
+						$tabla = "personal";
 					
 						$datos = array('nombre' => $_POST["regNombre"],
 								  'apellido' => $_POST["regApellido"],
+								  'sexo' => $_POST["regSexo"],
 								  'cedula' => $_POST["regCedula"],
 								  'telefono' => $_POST["regTelefono"],
 								  'direccion' => $_POST["regDireccion"],
@@ -36,7 +38,7 @@ class ctrDesignacion{
 
 								);
 
-						$respuesta = mdlDesignacion::mdlCrearDesignacion($tabla, $datos);
+						$respuesta = mdlPersonal::mdlCrearPersonal($tabla, $datos);
 																																									
 						if ($respuesta == "ok") {
 							
@@ -44,12 +46,12 @@ class ctrDesignacion{
 
 								Swal.fire({
 									  icon: "success",
-									  title: "La designación ha sido creada correctamente",
+									  title: "El perfil ha sido creado correctamente",
 									  showConfirmButton: true
 									  }).then(function(result){
 												if (result.value) {
 
-												window.location = "designaciones";
+												window.location = "accion-personal";
 
 												}
 											})
@@ -65,18 +67,18 @@ class ctrDesignacion{
 			
 	}
 
-	static public function ctrMostrarDesignacion($campo, $valor)
+	static public function ctrMostrarPersonal($campo, $valor)
 	{
-		$tabla = "designaciones";
+		$tabla = "personal";
 
-		$respuesta = mdlDesignacion::mdlMostrarDesignacion($tabla, $campo, $valor);
+		$respuesta = mdlPersonal::mdlMostrarPersonal($tabla, $campo, $valor);
 		
 		return $respuesta;
 	}
 
-	public function ctrEditarDesignacion()
+	public function ctrEditarPersonal()
 	{
-		if (isset($_POST["actualizarDesignacion"])) 
+		if (isset($_POST["actualizarPersonal"])) 
 		{
 			
 			if(isset($_POST["regNombre"]) && isset($_POST["regApellido"]) && isset($_POST["regCedula"]) && isset($_POST["regSalario"]) && isset($_POST["regPosicion"]) && isset($_POST["regFechaIngreso"]) && isset($_POST["regDepartamento"]))
@@ -89,9 +91,9 @@ class ctrDesignacion{
 					    Validaciones::formatearFechas($_POST["regFechaIngreso"])) {
 						$salario = str_replace(".00", "", $_POST["regSalario"]);
 						
-						$tabla = "designaciones";
+						$tabla = "personal";
 					
-						$datos = array('id' => $_POST["idDesignacion"],
+						$datos = array('id' => $_POST["idPersonal"],
 								       'nombre' => $_POST["regNombre"],
 									   'apellido' => $_POST["regApellido"],
 									   'cedula' => $_POST["regCedula"],
@@ -105,7 +107,7 @@ class ctrDesignacion{
 									   'usuario' => $_SESSION["UsuarioID"]
 								);
 
-					$respuesta = mdlDesignacion::mdlEditarDesignacion($tabla, $datos);
+					$respuesta = mdlPersonal::mdlEditarPersonal($tabla, $datos);
 
 					if ($respuesta == "ok") {
 						
@@ -113,13 +115,13 @@ class ctrDesignacion{
 
 								Swal.fire({
 								  icon: "success",
-								  title: "Se ha actualizado correctamente la designación",
+								  title: "Se actualizó correctamente el perfil",
 								  showConfirmButton: true,	
 								}).then(function(result){
 
 									if(result.value){
 									
-										window.location = "designaciones";
+										window.location = "accion-personal";
 										
 									}
 								});
@@ -136,14 +138,14 @@ class ctrDesignacion{
 		
 	}
 
-	public function ctrEliminarDesignacion()
+	public function ctrEliminarPersonal()
 	{
-		if (isset($_GET["idDesignacion"])) {
+		if (isset($_GET["idPersonal"])) {
 			
-			$tabla = "designaciones";
-			$datos = $_GET["idDesignacion"];
+			$tabla = "personal";
+			$datos = $_GET["idPersonal"];
 
-			$respuesta = mdlDesignacion::mdlEliminarDesignacion($tabla, $datos);
+			$respuesta = mdlPersonal::mdlEliminarPersonal($tabla, $datos);
 
 			if($respuesta){
 
@@ -151,7 +153,7 @@ class ctrDesignacion{
 
 					Swal.fire({
 						  type: "success",
-						  title: "La designación ha sido borrada correctamente",
+						  title: "El personal ha sido borrado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar",
 						  closeOnConfirm: true
@@ -159,7 +161,7 @@ class ctrDesignacion{
 
 								if (result.value) {
 
-								window.location = "inicio";
+								window.location = "accion-personal";
 								
 								}
 							});

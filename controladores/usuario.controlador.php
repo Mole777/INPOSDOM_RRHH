@@ -44,6 +44,43 @@ class ctrUsuario{
 		
 	public function ctrCrearUsuario()
 	{
+		if (isset($_POST["guardar"])) {
+			
+			if (!empty("regNombre") && !empty("regApellido") && !empty("regUsuario") && !empty("regClave") && !empty("regRol")) {
+				
+				$tabla = "Usuarios_rrhh";
+
+				$datos = array('nombre' => $_POST["regNombre"],
+							'apellido' => $_POST["regApellido"],
+							'usuario' => $_POST["regUsuario"],
+							'clave' => $_POST["regClave"],
+							'rol' => $_POST['regRol'],
+							'estado' => 1);
+
+				$respuesta=mdlUsuario::mdlCrearUsuario($tabla, $datos);
+
+				if ($respuesta == "ok") {
+							
+							echo'<script>
+
+								Swal.fire({
+									  icon: "success",
+									  title: "El usuario ha sido creada correctamente",
+									  showConfirmButton: true
+									  }).then(function(result){
+												if (result.value) {
+
+												window.location = "administrador-usuarios";
+
+												}
+											})
+
+								</script>';
+
+						}
+			}
+		}
+		
 
 	}
 
