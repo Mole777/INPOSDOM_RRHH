@@ -97,15 +97,13 @@ session_start();
        
         
     ?>
-
-
     
   <!-- JS -->
   <script src="vistas/js/departamento.js"></script>
   <script src="vistas/js/personal.js"></script>
   <script src="vistas/js/posicion.js"></script>
   <script src="vistas/js/perfil-personal.js"></script>
-  
+  <script src="vistas/js/usuario.js"></script>
     
   </body>
 </html>

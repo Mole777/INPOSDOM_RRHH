@@ -44,7 +44,7 @@
                     <th>Código</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>Cédula</th>
+                    <th>Documento</th>
                     <th>Teléfono</th>
                     <th>Posición</th>
                     <th>Departamento</th>
@@ -71,7 +71,7 @@
                         <td><?= $value["Id"]?></td>
                         <td><?= $value["Nombre"]?></td>
                         <td><?= $value["Apellido"]?></td>
-                        <td><?= $value["Cedula"]?></td>
+                        <td><?= $value["Documento"]?></td>
                         <td><?= $value["Telefono"]?></td>
                         <td><?= $value["Posicion"]?></td>
                         <td><?= $value["Departamento"]?></td>
@@ -130,28 +130,57 @@
       
         <div class="modal-body">
          
-          <form method="post">
+          <form method="post" id="formValidarPersonal">
 
             <div class="row">  
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="nombre"> Nombre: </label>
-                  <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombre" name="regNombre" required autocomplete="off">
+                  <input type="text" minlength="3" class="form-control" id="nombre" placeholder="Ingresar nombre" name="regNombre" required autocomplete="off">
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="apellido"> Apellido: </label>
-                  <input type="text" class="form-control" id="apellido" placeholder="Ingresar apellido" name="regApellido" required autocomplete="off">
+                  <input type="text" class="form-control" id="apellido" placeholder="Ingresar apellido" name="regApellido" minlength="3" required autocomplete="off">
+                </div>
+              </div>
+
+              <div class="col-6">
+                <label for="TipoDocumento">Tipo Documento:</label>
+                <select name="regTipoDocumento" id="TipoDocumento" onchange="habilitarDocumento()" class="form-control selectDocumento" required>
+                  <option value="">Seleccionar Documento</option>
+                 
+                  <?php
+                    
+                    $campo = null;
+                    $valor = null;
+                    $mostrarTiposDocumentos = ctrDocumento::ctrMostrarDocumentos($campo, $valor);
+
+                    foreach ($mostrarTiposDocumentos as $key => $value): 
+
+                  ?>
+                    <option value="<?= $value["Id"] ?>"><?= $value["Tipo"]?></option>
+                    
+                  <?php endforeach ?>
+                
+                </select>
+              </div>
+
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="documento"> Documento(Sin guiones): </label>
+                  <input type="number" class="form-control" id="documento" placeholder="Ingresar documento" name="regDocumento" required autocomplete="off" min="1" minlength="11" maxlength="11" disabled>
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
-                  <label for="cedula"> Cédula(Sin guiones): </label>
-                  <input type="number" class="form-control" id="cedula" placeholder="Ingresar cédula" name="regCedula" required autocomplete="off" min="1" minlength="11" maxlength="11">
+                  <label for="correo"> Correo: </label>
+                  <input type="email" class="form-control" id="correo" placeholder="Ingresar correo" name="regCorreo" autocomplete="off">
                 </div>
               </div>
 
@@ -168,13 +197,6 @@
                 <div class="form-group">
                   <label for="sexo"> Teléfono: </label>
                   <input type="number" class="form-control" id="telefono" placeholder="Ingresar teléfono" name="regTelefono" autocomplete="off" min="1">
-                </div>
-              </div>
-
-              <div class="col-6">
-                <div class="form-group">
-                  <label for="correo"> Correo: </label>
-                  <input type="email" class="form-control" id="correo" placeholder="Ingresar correo" name="regCorreo" autocomplete="off">
                 </div>
               </div>
 
@@ -237,7 +259,7 @@
                 </div>
               </div>
 
-              <div class="col-6">
+              <div class="col-3">
                 <div class="form-group">
                   <label for="accion_personal"> Acción de Personal: </label>
                   <select id="accion_personal" class="form-control" autocomplete="off" disabled>
@@ -246,7 +268,7 @@
                 </div>
               </div>
 
-              <div class="col-6">
+              <div class="col-3">
                 <div class="form-group">
                   <label for="fechaIngreso"> Fecha de Ingreso: </label>
                   <input type="date" class="form-control" id="fechaIngreso" name="regFechaIngreso" required autocomplete="off">
@@ -324,8 +346,8 @@
 
               <div class="col-6">
                 <div class="form-group">
-                  <label for="editarCedulaPersonal"> Cédula(Sin guiones): </label>
-                  <input type="number" class="form-control" id="editarCedulaPersonal" placeholder="Ingresar cédula" name="regCedula" required autocomplete="off">
+                  <label for="editarDocumentoPersonal"> Documento(Sin guiones): </label>
+                  <input type="number" class="form-control" id="editarDocumentoPersonal" placeholder="Ingresar documento" name="regDocumento" required autocomplete="off">
                 </div>
               </div>
 
@@ -458,3 +480,19 @@
   $eliminarPersonal->ctrEliminarPersonal();
 
 ?>
+
+<script>
+  
+  function habilitarDocumento()
+  {
+    var valor = $("option:selected").val();
+
+    if (valor != "") {
+      $("#documento").attr('disabled', false);
+    }else{
+      $("#documento").attr('disabled', true);
+    }
+   
+  }
+  
+</script>

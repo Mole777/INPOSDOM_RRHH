@@ -11,7 +11,7 @@ class mdlUsuario{
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
 		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
-		$stmt->bindParma(":clave", $datos["clave"], PDO::PARAM_STR);
+		$stmt->bindParam(":clave", $datos["clave"], PDO::PARAM_STR);
 		$stmt->bindParam(":rol", $datos["rol"], PDO::PARAM_INT);
 		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_INT);
 
@@ -30,7 +30,7 @@ class mdlUsuario{
 	static public function mdlMostrarUsuario($tabla, $campo, $valor)
 	{
 
-		if ($campo != "") {
+		if ($campo != null) {
 			
 			$stmt = Conexion::conectar()->prepare("SELECT usu.Id AS Id, usu.Nombre, usu.Apellido, usu.Usuario, usu.Clave, usu.EstadoID, est.Tipo AS Estado, rol.Nombre AS Rol, dep.Nombre AS Departamento FROM usuarios_rrhh AS usu 
 			INNER JOIN estado_rrhh AS est ON usu.EstadoID = est.Id 
@@ -38,11 +38,11 @@ class mdlUsuario{
 			INNER JOIN departamentos_inposdom AS dep ON rol.DepartamentoID = dep.Id
 			WHERE $campo = :$campo");
 
-			$stmt -> bindParam(":".$campo, $valor, PDO::PARAM_STR);
+			$stmt->bindParam(":".$campo, $valor, PDO::PARAM_INT);
 
-			$stmt -> execute();
+			$stmt->execute();
 
-			return $stmt -> fetch();
+			return $stmt->fetch();
 
 		}else{
 
@@ -56,7 +56,7 @@ class mdlUsuario{
 			return $stmt -> fetchAll();
 		}
 
-		$stmt ->close();
+		$stmt->close();
 		$stmt = null;
 		
 	}
@@ -66,8 +66,24 @@ class mdlUsuario{
 		
 	}
 
-	static public function mdlEliminarUsuario()
+	static public function mdlEliminarUsuario($tabla, $datos)
 	{
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE Id = :id");
+
+			$stmt -> bindParam(":id", $datos, PDO::PARAM_INT);
+
+			if ($stmt->execute()) {
+				
+				return true;
+
+			}else{
+
+				return false;
+			}
+
+			$stmt->close();
+			$stmt=null;
 
 	}
 

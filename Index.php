@@ -8,6 +8,7 @@ require_once "controladores/departamento.controlador.php";
 require_once "controladores/posicion.controlador.php";
 require_once "controladores/estado.controlador.php";
 require_once "controladores/rol.controlador.php";
+require_once "controladores/documento.controlador.php";
 
 //Modelos
 require_once "modelos/conexion.php";
@@ -18,6 +19,7 @@ require_once "modelos/historico.modelo.php";
 require_once "modelos/posicion.modelo.php";
 require_once "modelos/estado.modelo.php";
 require_once "modelos/rol.modelo.php";
+require_once "modelos/documento.modelo.php";
 
 $Plantilla = new ctrPlantilla();
 $Plantilla -> ctrEjecutarPlantilla();

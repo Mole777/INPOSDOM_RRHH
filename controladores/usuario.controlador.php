@@ -55,9 +55,10 @@ class ctrUsuario{
 							'usuario' => $_POST["regUsuario"],
 							'clave' => $_POST["regClave"],
 							'rol' => $_POST['regRol'],
-							'estado' => 1);
+							'estado' => $_POST["regEstado"]);
 
 				$respuesta=mdlUsuario::mdlCrearUsuario($tabla, $datos);
+				unset($_POST["guardar"]);
 
 				if ($respuesta == "ok") {
 							
@@ -65,7 +66,7 @@ class ctrUsuario{
 
 								Swal.fire({
 									  icon: "success",
-									  title: "El usuario ha sido creada correctamente",
+									  title: "El usuario ha sido creado correctamente",
 									  showConfirmButton: true
 									  }).then(function(result){
 												if (result.value) {
@@ -95,11 +96,40 @@ class ctrUsuario{
 
 	public function ctrEditarUsuario()
 	{
-
+		
 	}
 
 	public function ctrEliminarUsuario()
 	{
+		if (isset($_GET["idUsuario"])) {
+				
+				$tabla = "Usuarios_rrhh";
+				$datos = $_GET["idUsuario"];
+
+				$respuesta = mdlUsuario::mdlEliminarUsuario($tabla, $datos);
+
+				if($respuesta){
+
+					echo'<script>
+
+					Swal.fire({
+						  icon: "success",
+						  title: "El usuario ha sido borrado correctamente",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar",
+						  closeOnConfirm: false
+						  }).then(function(result){
+									if (result.value) {
+
+									window.location = "administrador-usuarios";
+
+									}
+								})
+
+					</script>';
+
+				}	
+			}
 
 	}
 

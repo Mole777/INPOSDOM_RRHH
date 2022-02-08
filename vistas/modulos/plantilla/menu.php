@@ -3,7 +3,7 @@
 
   <a href="index3.html" class="brand-link">
 
-    <img src="vistas/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <img src="vistas/dist/img/AdminLTELogo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
 
     <span class="brand-text font-weight-light"><b>RRHH</b></span>
   
@@ -31,7 +31,7 @@
 
     <nav class="mt-2">
 
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">   
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"> 
         
         <li class="nav-item">
 
@@ -53,6 +53,7 @@
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
+      
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="departamentos" class="nav-link">

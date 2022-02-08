@@ -10,12 +10,12 @@ class ctrPersonal{
 		if (isset($_POST["guardar"])) 
 		{
 			
-			if(isset($_POST["regNombre"]) && isset($_POST["regApellido"]) && isset($_POST["regCedula"]) && isset($_POST["regSalario"]) && isset($_POST["regPosicion"]) && isset($_POST["regFechaIngreso"]) && isset($_POST["regDepartamento"]) && isset($_POST["regSexo"]))
+			if(isset($_POST["regNombre"]) && isset($_POST["regApellido"]) && isset($_POST["regDocumento"]) && isset($_POST["regSalario"]) && isset($_POST["regPosicion"]) && isset($_POST["regFechaIngreso"]) && isset($_POST["regDepartamento"]) && isset($_POST["regSexo"]))
 			{
 					
 					if (Validaciones::soloLetras($_POST["regNombre"]) && 
 						Validaciones::soloLetras($_POST["regApellido"]) &&
-						Validaciones::soloNumeros($_POST["regCedula"]) &&
+						Validaciones::validarTipoDocumento($_POST["regTipoDocumento"], $_POST["regDocumento"]) &&
 						Validaciones::soloNumeros($_POST["regTelefono"]) &&
 						Validaciones::soloLetras($_POST["regSexo"]) &&
 					    Validaciones::formatearFechas($_POST["regFechaIngreso"])) {
@@ -26,7 +26,7 @@ class ctrPersonal{
 						$datos = array('nombre' => $_POST["regNombre"],
 								  'apellido' => $_POST["regApellido"],
 								  'sexo' => $_POST["regSexo"],
-								  'cedula' => $_POST["regCedula"],
+								  'documento' => $_POST["regDocumento"],
 								  'telefono' => $_POST["regTelefono"],
 								  'direccion' => $_POST["regDireccion"],
 								  'correo' => $_POST["regCorreo"],
@@ -34,7 +34,8 @@ class ctrPersonal{
 								  'posicion' => $_POST["regPosicion"],
 								  'fecha' => $_POST["regFechaIngreso"],
 								  'departamento' => $_POST["regDepartamento"],
-								  'usuario' => $_SESSION["UsuarioID"]
+								  'usuario' => $_SESSION["UsuarioID"],
+								  'documentoID' => $_POST["regTipoDocumento"]
 
 								);
 
@@ -81,12 +82,12 @@ class ctrPersonal{
 		if (isset($_POST["actualizarPersonal"])) 
 		{
 			
-			if(isset($_POST["regNombre"]) && isset($_POST["regApellido"]) && isset($_POST["regCedula"]) && isset($_POST["regSalario"]) && isset($_POST["regPosicion"]) && isset($_POST["regFechaIngreso"]) && isset($_POST["regDepartamento"]))
+			if(isset($_POST["regNombre"]) && isset($_POST["regApellido"]) && isset($_POST["regDocumento"]) && isset($_POST["regSalario"]) && isset($_POST["regPosicion"]) && isset($_POST["regFechaIngreso"]) && isset($_POST["regDepartamento"]))
 			{
 					
 				if (Validaciones::soloLetras($_POST["regNombre"]) && 
 						Validaciones::soloLetras($_POST["regApellido"]) &&
-						Validaciones::soloNumeros($_POST["regCedula"]) &&
+						Validaciones::soloNumeros($_POST["regDocumento"]) &&
 						Validaciones::soloNumeros($_POST["regTelefono"]) &&
 					    Validaciones::formatearFechas($_POST["regFechaIngreso"])) {
 						$salario = str_replace(".00", "", $_POST["regSalario"]);
@@ -96,7 +97,7 @@ class ctrPersonal{
 						$datos = array('id' => $_POST["idPersonal"],
 								       'nombre' => $_POST["regNombre"],
 									   'apellido' => $_POST["regApellido"],
-									   'cedula' => $_POST["regCedula"],
+									   'documento' => $_POST["regDocumento"],
 									   'telefono' => $_POST["regTelefono"],
 									   'direccion' => $_POST["regDireccion"],
 									   'correo' => $_POST["regCorreo"],

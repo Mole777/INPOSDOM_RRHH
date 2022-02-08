@@ -68,7 +68,7 @@
 					echo'<script>
 
 					Swal.fire({
-						  type: "success",
+						  icon: "success",
 						  title: "El departamento ha sido actualizado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"

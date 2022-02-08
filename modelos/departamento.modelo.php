@@ -31,7 +31,7 @@
 
 				$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $campo = :$campo");
 				
-				$stmt->bindParam(":".$campo, $valor, PDO::PARAM_STR);
+				$stmt->bindParam(":".$campo, $valor, PDO::PARAM_INT);
 				
 				$stmt->execute();
 

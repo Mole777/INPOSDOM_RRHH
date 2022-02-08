@@ -83,3 +83,6 @@ $(".tablaPersonal").on("click", ".btnEliminarPersonal", function(){
 	})
 });
 
+/*=============================================
+HABILITAR DOCUMENTO
+=============================================*/

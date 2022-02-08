@@ -98,8 +98,8 @@
                   </td>
                   <td>
                     <div class="btn-group">
-                      <button class="btn btn-info btnEditarDesignacion" idDesignacion="<?= $value["Id"]?>" data-toggle="modal" data-target="#modalEditarDesignacion"><i class="fas fa-edit"></i></button>
-                      <button class="btn btn-danger btnEliminarDesignacion" idDesignacion="<?= $value["Id"]?>" ><i class="fas fa-trash-alt"></i></button>
+                      <button class="btn btn-info btnEditarUsuario" idUsuario="<?= $value["Id"]?>" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-danger btnEliminarUsuario" idUsuario="<?= $value["Id"]?>" ><i class="fas fa-trash-alt"></i></button>
                     </div>
                   </td>
                 </tr>
@@ -155,21 +155,21 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="nombre"> Nombre: </label>
-                  <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombre" name="regNombre" required autocomplete="off">
+                  <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombre" name="regNombre" required autocomplete="off" required>
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="apellido"> Apellido: </label>
-                  <input type="text" class="form-control" id="apellido" placeholder="Ingresar apellido" name="regApellido" required autocomplete="off">
+                  <input type="text" class="form-control" id="apellido" placeholder="Ingresar apellido" name="regApellido" required autocomplete="off" required>
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="usuario"> Usuario: </label>
-                  <input type="text" class="form-control" id="usuario" placeholder="Ingresar usuario" name="regUsuario" required autocomplete="off">
+                  <input type="text" class="form-control" id="usuario" placeholder="Ingresar usuario" name="regUsuario" required autocomplete="off" required>
                 </div>
               </div>
 
@@ -177,14 +177,14 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="clave"> Clave: </label>
-                  <input type="text" class="form-control" id="clave" placeholder="Ingresar clave" name="regClave" required autocomplete="off">
+                  <input type="text" class="form-control" id="clave" placeholder="Ingresar clave" name="regClave" required autocomplete="off" required>
                 </div>
               </div>
 
               <div class="col-6">
                 <div class="form-group">
                   <label for="regRol">Rol:</label>
-                  <select name="regRol" id="regRol" class="form-control" placeholder="Seleccione el rol">
+                  <select name="regRol" id="regRol" class="form-control" placeholder="Seleccione el rol" required>
                     <option>Seleccionar rol</option>
                     <?php 
 
@@ -210,8 +210,9 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="regEstado">Estado:</label>
-                  <select name="regEstado" id="regEstado" class="form-control" disabled>
-                    <option>Activo</option>
+                  <select name="regEstado" id="regEstado" class="form-control" name="regEstado" required>
+                    <option value="1">Activo</option>
+                    <option value="2">Inactivo</option>
                   </select>
                 </div>
               </div>
@@ -236,3 +237,122 @@
     </div>
   </div>
 </div>
+
+<!-- MODAL EDITAR USUARIOS -->
+
+<div class="modal fade" id="modalEditarUsuario" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="editarUsuarioLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+
+    <div class="modal-content">
+    
+      <div class="modal-header">
+    
+        <h5 class="modal-title" id="editarUsuarioLabel">Editar usuario</h5>
+    
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    
+          <span aria-hidden="true">&times;</span>
+    
+        </button>
+    
+      </div>
+      
+        <div class="modal-body">
+         
+          <form method="post">
+
+            <div class="row">  
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="nombre"> Nombre: </label>
+                  <input type="text" class="form-control" id="editarNombreUsuario" placeholder="Ingresar nombre" name="regNombre" required autocomplete="off" required>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="apellido"> Apellido: </label>
+                  <input type="text" class="form-control" id="editarApellidoUsuario" placeholder="Ingresar apellido" name="regApellido" required autocomplete="off" required>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="usuario"> Usuario: </label>
+                  <input type="text" class="form-control" id="editarUsuarioUsuario" placeholder="Ingresar usuario" name="regUsuario" required autocomplete="off" required>
+                </div>
+              </div>
+
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="clave"> Clave: </label>
+                  <input type="text" class="form-control" id="editarClaveUsuario" placeholder="Ingresar clave" name="regClave" required autocomplete="off" required>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="regRol">Rol:</label>
+                  <select name="regRol" id="editarRolUsuario" class="form-control" placeholder="Seleccione el rol" required>
+                    <option>Seleccionar rol</option>
+                    <?php 
+
+                      $campo = null;
+                      $valor = null;
+
+                      $mostrarRoles = ctrRol::ctrMostrarRoles($campo, $valor);
+
+                      foreach ($mostrarRoles as $key => $value): 
+                    ?>
+                      
+                      <option value="<?= $value["Id"] ?>"><?= $value["Nombre"] ?></option>
+
+
+                    <?php
+                      endforeach;
+                    ?>
+                    
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="regEstado">Estado:</label>
+                  <select name="regEstado" id="editarEstadoUsuario" class="form-control" name="regEstado" required>
+                    <option value="1">Activo</option>
+                    <option value="2">Inactivo</option>
+                  </select>
+                </div>
+              </div>
+
+            </div> 
+
+          </div>
+
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-secondary">Vaciar registro</button>
+          <button type="submit" class="btn btn-primary" name="guardar">Guardar registro</button>
+        </div>
+
+        <?php
+
+          $editarUsuario = new ctrUsuario();
+          $editarUsuario -> ctrEditarUsuario();
+
+        ?>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<?php
+
+  $eliminarUsuario = new ctrUsuario();
+  $eliminarUsuario -> ctrEliminarUsuario();
+
+?>
