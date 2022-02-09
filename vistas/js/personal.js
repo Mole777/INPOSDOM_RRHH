@@ -1,7 +1,9 @@
 /*=============================================
 EDITAR DESIGNACION
 =============================================*/
-$(".tablaPersonal").on("click", ".btnEditarPersonal", function(){
+$(".tablaPersonal").on("click", ".btnEditarPersonal", function(e){
+
+  e.preventDefault();
 
   var idPersonal = $(this).attr("idPersonal");
 
@@ -19,36 +21,27 @@ $(".tablaPersonal").on("click", ".btnEditarPersonal", function(){
     dataType: "json",
     success: function(respuesta){
 
-      console.log("respuesta", respuesta);
-
       $("#editarIdPersonal").val(respuesta["Id"]);
       $("#editarNombrePersonal").val(respuesta["Nombre"]);
       $("#editarApellidoPersonal").val(respuesta["Apellido"]);
-      $("#editarCedulaPersonal").val(respuesta["Cedula"]);
+      $("#editarDocumentoPersonal").val(respuesta["Documento"]);
       $("#editarTelefonoPersonal").val(respuesta["Telefono"]);
       $("#editarCorreoPersonal").val(respuesta["Correo"]);
       $("#editarDireccionPersonal").val(respuesta["Direccion"]);
       $("#editarFechaIngresoPersonal").val(respuesta["Fecha_Ingreso"]);
       $("#editarSalarioPersonal").val(respuesta["Salario"]);
 
-      $("#selectDepartamentoPersonal").html(respuesta["Departamento"]);
-      $("#selectDepartamentoPersonal").val(respuesta["DepartamentoID"]);
-      $("#selectDepartamentoPersonal").attr("selected", true);
+      $("#selectDepartamentoPersonal"+respuesta["DepartamentoID"]).removeAttr("selected", true);
+      $("#selectDepartamentoPersonal"+respuesta["DepartamentoID"]).attr("selected", true);
 
-      $("#selectPosicionPersonal").html(respuesta["Posicion"]);
-      $("#selectPosicionPersonal").val(respuesta["PosicionID"]);
-      $("#selectPosicionPersonal").attr("selected", true);
+      $("#selectPosicionPersonal"+respuesta["PosicionID"]).removeAttr("selected", true);
+      $("#selectPosicionPersonal"+respuesta["PosicionID"]).attr("selected", true);
 
+      $("#selectSexoPersonal"+respuesta["Sexo"]).removeAttr("selected", true);
+      $("#selectSexoPersonal"+respuesta["Sexo"]).attr("selected", true);
 
-      if (respuesta["Sexo"] == 'M') {
-
-        $("#editarSexoPersonal").html(respuesta["Masculino"]);
-
-      }else if(respuesta["Sexo"] == 'F'){
-    
-        $("#editarSexoPersonal").html(respuesta["Femenino"]);
-        
-      }
+      $("#tipoDocumento"+respuesta["DocumentoID"]).removeAttr("selected", true);
+      $("#tipoDocumento"+respuesta["DocumentoID"]).attr("selected", true);     
 
     }
     
@@ -82,7 +75,3 @@ $(".tablaPersonal").on("click", ".btnEliminarPersonal", function(){
 		  }
 	})
 });
-
-/*=============================================
-HABILITAR DOCUMENTO
-=============================================*/

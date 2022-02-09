@@ -40,7 +40,7 @@
 			return $resultado;
 		}
 
-		static public function validarTipoDocumento($input, $value)
+		static public function tipoDocumento($input, $value)
 		{
 			switch ($input) {
 				

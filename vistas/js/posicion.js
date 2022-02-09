@@ -22,6 +22,7 @@ $(".tablaPosicion").on("click", ".btnEditarPosicion", function(){
 
       $("#editarIdPosicion").val(respuesta["Id"]);
       $("#editarNombrePosicion").val(respuesta["Nombre"]);
+      
 
     }
   })

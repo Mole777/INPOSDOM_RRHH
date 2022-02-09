@@ -28,7 +28,7 @@ class ctrUsuario{
 
 					echo '<script>
 
-							window.location = "inicio";
+							window.location = "accion-personal";
 
 						</script>';
 

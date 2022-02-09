@@ -22,8 +22,11 @@ $(".tablaUsuarios").on("click", ".btnEditarUsuario", function(){
 			console.log("respuesta", respuesta);
 
 		}
+
 	})
+
 })
+
 
 /*=============================================
 ELIMINAR USUARIO
@@ -47,11 +50,6 @@ $(".tablaUsuarios").on("click", ".btnEliminarUsuario", function(){
           
             window.location = "index.php?ruta=administrador-usuarios&idUsuario="+idUsuario;
         }
-
   })
-
-
-
-
 
 })

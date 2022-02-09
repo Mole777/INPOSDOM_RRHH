@@ -15,7 +15,7 @@ class ctrPersonal{
 					
 					if (Validaciones::soloLetras($_POST["regNombre"]) && 
 						Validaciones::soloLetras($_POST["regApellido"]) &&
-						Validaciones::validarTipoDocumento($_POST["regTipoDocumento"], $_POST["regDocumento"]) &&
+						Validaciones::tipoDocumento($_POST["regTipoDocumento"], $_POST["regDocumento"]) &&
 						Validaciones::soloNumeros($_POST["regTelefono"]) &&
 						Validaciones::soloLetras($_POST["regSexo"]) &&
 					    Validaciones::formatearFechas($_POST["regFechaIngreso"])) {
@@ -87,7 +87,7 @@ class ctrPersonal{
 					
 				if (Validaciones::soloLetras($_POST["regNombre"]) && 
 						Validaciones::soloLetras($_POST["regApellido"]) &&
-						Validaciones::soloNumeros($_POST["regDocumento"]) &&
+						Validaciones::tipoDocumento($_POST["regTipoDocumento"], $_POST["regDocumento"]) &&
 						Validaciones::soloNumeros($_POST["regTelefono"]) &&
 					    Validaciones::formatearFechas($_POST["regFechaIngreso"])) {
 						$salario = str_replace(".00", "", $_POST["regSalario"]);
@@ -105,7 +105,8 @@ class ctrPersonal{
 									   'posicion' => $_POST["regPosicion"],
 									   'fecha' => $_POST["regFechaIngreso"],
 									   'departamento' => $_POST["regDepartamento"],
-									   'usuario' => $_SESSION["UsuarioID"]
+									   'usuario' => $_SESSION["UsuarioID"],
+									   'documentoID' => $_POST["regTipoDocumento"]
 								);
 
 					$respuesta = mdlPersonal::mdlEditarPersonal($tabla, $datos);

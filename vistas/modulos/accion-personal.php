@@ -345,25 +345,29 @@
               </div>
 
               <div class="col-6">
-                <div class="form-group">
-                  <label for="editarDocumentoPersonal"> Documento(Sin guiones): </label>
-                  <input type="number" class="form-control" id="editarDocumentoPersonal" placeholder="Ingresar documento" name="regDocumento" required autocomplete="off">
-                </div>
-              </div>
+                <label for="TipoDocumento">Tipo Documento:</label>
+                <select name="regTipoDocumento" id="editarTipoDocumento" onchange="habilitarDocumento()" class="form-control" required>
+                 
+                  <?php
+                    
+                    $campo = null;
+                    $valor = null;
+                    $mostrarTiposDocumentos = ctrDocumento::ctrMostrarDocumentos($campo, $valor);
 
-              <div class="col-3">
-                <label for="editarSexoPersonal">Sexo:</label>
-                <select name="regSexo" class="form-control" required>
-                  <option value="" id="editarSexoPersonal"></option>
-                  <option value="M">Masculino</option>
-                  <option value="F">Femenino</option>
+                    foreach ($mostrarTiposDocumentos as $key => $value): 
+
+                  ?>
+                    <option id="tipoDocumento<?= $value['Id'] ?>" value="<?= $value["Id"] ?>"><?= $value["Tipo"]?></option>
+                    
+                  <?php endforeach ?>
+                
                 </select>
               </div>
 
-              <div class="col-3">
+              <div class="col-6">
                 <div class="form-group">
-                  <label for="editarTelefonoPersonal"> Teléfono: </label>
-                  <input type="number" class="form-control" id="editarTelefonoPersonal" placeholder="Ingresar teléfono" name="regTelefono" autocomplete="off">
+                  <label for="editarDocumentoPersonal"> Documento(Sin guiones): </label>
+                  <input type="number" class="form-control" id="editarDocumentoPersonal" placeholder="Ingresar documento" name="regDocumento" required autocomplete="off">
                 </div>
               </div>
 
@@ -373,6 +377,21 @@
                   <input type="email" class="form-control" id="editarCorreoPersonal" placeholder="Ingresar correo" name="regCorreo" autocomplete="off">
                 </div>
               </div>
+
+              <div class="col-3">
+                <label for="editarSexoPersonal">Sexo:</label>
+                <select name="regSexo" class="form-control selectSexo" required>
+                  <option value="M" id="selectSexoPersonalM">Masculino</option>
+                  <option value="F" id="selectSexoPersonalF">Femenino</option>
+                </select>
+              </div>
+
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="editarTelefonoPersonal"> Teléfono: </label>
+                  <input type="number" class="form-control" id="editarTelefonoPersonal" placeholder="Ingresar teléfono" name="regTelefono" autocomplete="off">
+                </div>
+              </div>              
 
               <div class="col-6">
                 <div class="form-group">
@@ -385,7 +404,6 @@
                 <div class="form-group">
                   <label for="posicion"> Posición: </label>
                   <select name="regPosicion" class="form-control" required autocomplete="off">
-                    <option value="" id="selectPosicionPersonal"></option>
                     
                     <?php
 
@@ -396,7 +414,7 @@
                     foreach ($mostrarPosiciones as $key => $value):
                     ?>
                       
-                    <option value="<?= $value["Id"] ?>" ><?= $value["Nombre"] ?></option>
+                    <option id="selectPosicionPersonal<?= $value['Id'] ?>" value="<?= $value["Id"] ?>" ><?= $value["Nombre"] ?></option>
 
                     <?php  
                       endforeach;
@@ -414,7 +432,6 @@
                   <label for="departamento"> Departamento: </label>             
                   <select name="regDepartamento" class="form-control" required autocomplete="off">
 
-                      <option value="" id="selectDepartamentoPersonal"></option>
                     <?php
 
                       $campo = null;
@@ -425,7 +442,7 @@
                       foreach ($mostrarDepartamentos as $key => $value):
                     ?>  
                         
-                      <option value="<?= $value["Id"] ?>"><?= $value["Nombre"] ?></option>
+                      <option id="selectDepartamentoPersonal<?= $value['Id'] ?>" value="<?= $value["Id"] ?>"><?= $value["Nombre"] ?></option>
 
                     <?php  
                       endforeach;
@@ -436,7 +453,7 @@
 
               </div>
 
-              <div class="col-12">
+              <div class="col-6">
                 <div class="form-group">
                   <label for="editarFechaIngresoPersonal"> Fecha de Ingreso: </label>
                   <input type="date" class="form-control" id="editarFechaIngresoPersonal" name="regFechaIngreso" required autocomplete="off">
@@ -488,11 +505,13 @@
     var valor = $("option:selected").val();
 
     if (valor != "") {
-      $("#documento").attr('disabled', false);
+      $("#documento").removeAttr('disabled');
     }else{
       $("#documento").attr('disabled', true);
     }
    
   }
-  
+
+
+
 </script>
