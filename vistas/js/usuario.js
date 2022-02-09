@@ -19,7 +19,18 @@ $(".tablaUsuarios").on("click", ".btnEditarUsuario", function(){
 		dataType: "json",
 		success: function(respuesta){
 
-			console.log("respuesta", respuesta);
+			$("#editarNombreUsuario").val(respuesta["Nombre"]);
+			$("#editarApellidoUsuario").val(respuesta["Apellido"]);
+			$("#editarUsuarioUsuario").val(respuesta["Usuario"]);
+			$("#editarClaveUsuario").val(respuesta["Clave"]);
+
+			$("#selectRolUsuario"+respuesta["RolID"]).removeAttr("selected", true);
+      $("#selectRolUsuario"+respuesta["RolID"]).attr("selected", true);   
+
+      $("#selectEstadoUsuario"+respuesta["EstadoID"]).removeAttr("selected", true);
+      $("#selectEstadoUsuario"+respuesta["EstadoID"]).attr("selected", true); 
+
+
 
 		}
 

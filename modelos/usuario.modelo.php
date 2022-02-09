@@ -32,11 +32,7 @@ class mdlUsuario{
 
 		if ($campo != null) {
 			
-			$stmt = Conexion::conectar()->prepare("SELECT usu.Id AS Id, usu.Nombre, usu.Apellido, usu.Usuario, usu.Clave, usu.EstadoID, est.Tipo AS Estado, rol.Nombre AS Rol, dep.Nombre AS Departamento FROM usuarios_rrhh AS usu 
-			INNER JOIN estado_rrhh AS est ON usu.EstadoID = est.Id 
-			INNER JOIN roles_rrhh AS rol ON usu.RolID = rol.Id
-			INNER JOIN departamentos_inposdom AS dep ON rol.DepartamentoID = dep.Id
-			WHERE $campo = :$campo");
+			$stmt = Conexion::conectar()->prepare("SELECT usu.Id AS Id, usu.Nombre, usu.Apellido, usu.Usuario, usu.Clave, usu.RolID AS RolID, usu.EstadoID, est.Tipo AS Estado, rol.Nombre AS Rol, dep.Nombre AS Departamento FROM usuarios_rrhh AS usu INNER JOIN estado_rrhh AS est ON usu.EstadoID = est.Id INNER JOIN roles_rrhh AS rol ON usu.RolID = rol.Id INNER JOIN departamentos_inposdom AS dep ON rol.DepartamentoID = dep.Id WHERE usu.Id = :$campo");
 
 			$stmt->bindParam(":".$campo, $valor, PDO::PARAM_INT);
 
@@ -46,10 +42,7 @@ class mdlUsuario{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT usu.Id AS Id, usu.Nombre, usu.Apellido, usu.Usuario, usu.Clave, usu.EstadoID, est.Tipo AS Estado, rol.Nombre AS Rol, dep.Nombre AS Departamento FROM usuarios_rrhh AS usu 
-			INNER JOIN estado_rrhh AS est ON usu.EstadoID = est.Id 
-			INNER JOIN roles_rrhh AS rol ON usu.RolID = rol.Id
-			INNER JOIN departamentos_inposdom AS dep ON rol.DepartamentoID = dep.Id");
+			$stmt = Conexion::conectar()->prepare("SELECT usu.Id AS Id, usu.Nombre, usu.Apellido, usu.Usuario, usu.Clave, usu.EstadoID, est.Tipo AS Estado, rol.Nombre AS Rol, dep.Nombre AS Departamento FROM usuarios_rrhh AS usu INNER JOIN estado_rrhh AS est ON usu.EstadoID = est.Id INNER JOIN roles_rrhh AS rol ON usu.RolID = rol.Id INNER JOIN departamentos_inposdom AS dep ON rol.DepartamentoID = dep.Id");
 
 			$stmt -> execute();
 
@@ -61,7 +54,7 @@ class mdlUsuario{
 		
 	}
 
-	static public function mdlActualizarUsuario()
+	static public function mdlActualizarUsuario($tabla, $datos)
 	{
 		
 	}

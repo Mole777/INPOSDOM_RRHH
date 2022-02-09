@@ -169,7 +169,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="usuario"> Usuario: </label>
-                  <input type="text" class="form-control" id="usuario" placeholder="Ingresar usuario" name="regUsuario" required autocomplete="off" required>
+                  <input type="text" class="form-control" id="usuario" placeholder="Ingresar usuario" name="regUsuario" required autocomplete="off">
                 </div>
               </div>
 
@@ -177,7 +177,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="clave"> Clave: </label>
-                  <input type="text" class="form-control" id="clave" placeholder="Ingresar clave" name="regClave" required autocomplete="off" required>
+                  <input type="text" class="form-control" id="clave" placeholder="Ingresar clave" name="regClave" required autocomplete="off">
                 </div>
               </div>
 
@@ -296,8 +296,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="regRol">Rol:</label>
-                  <select name="regRol" id="editarRolUsuario" class="form-control" placeholder="Seleccione el rol" required>
-                    <option>Seleccionar rol</option>
+                  <select name="regRol" class="form-control" placeholder="Seleccione el rol" required>
                     <?php 
 
                       $campo = null;
@@ -305,15 +304,12 @@
 
                       $mostrarRoles = ctrRol::ctrMostrarRoles($campo, $valor);
 
-                      foreach ($mostrarRoles as $key => $value): 
-                    ?>
+                      foreach ($mostrarRoles as $key => $value): ?>
                       
-                      <option value="<?= $value["Id"] ?>"><?= $value["Nombre"] ?></option>
+                      <option id="selectRolUsuario<?= $value["Id"] ?>" value="<?= $value["Id"] ?>"><?= $value["Nombre"] ?></option>
 
 
-                    <?php
-                      endforeach;
-                    ?>
+                    <?php endforeach; ?>
                     
                   </select>
                 </div>
@@ -323,8 +319,16 @@
                 <div class="form-group">
                   <label for="regEstado">Estado:</label>
                   <select name="regEstado" id="editarEstadoUsuario" class="form-control" name="regEstado" required>
-                    <option value="1">Activo</option>
-                    <option value="2">Inactivo</option>
+                    <?php 
+
+                      $campo = null;
+                      $valor = null;
+                      $mostrarEstados = ctrEstado::ctrMostrarEstados($campo, $valor);
+                      foreach ($mostrarEstados as $key => $value): ?>
+
+                      <option id="selectEstadoUsuario<?= $value["Id"] ?>" value="<?= $value["Id"]?>"><?= $value["Tipo"] ?></option>
+
+                    <?php endforeach; ?>
                   </select>
                 </div>
               </div>
