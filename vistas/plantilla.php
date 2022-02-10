@@ -62,8 +62,11 @@ session_start();
         include_once "vistas/modulos/plantilla/menu.php";
 
         if (isset($_GET["ruta"])) {
-        
-          if ($_GET["ruta"] == "accion-personal" ||
+
+          if (isset($_SESSION["AccionAdministrativa"])) {
+
+
+             if ($_GET["ruta"] == "accion-personal" ||
               $_GET["ruta"] == "perfil" ||
               $_GET["ruta"] == "departamentos" ||
               $_GET["ruta"] == "posiciones" ||
@@ -80,6 +83,25 @@ session_start();
               include_once "vistas/modulos/inicio.php";
 
             }
+
+
+          }else{
+
+            if ($_GET["ruta"] == "accion-personal" ||
+              $_GET["ruta"] == "salir"
+              ) {
+              
+              include_once "vistas/modulos/".$_GET["ruta"].".php";
+
+            }else{
+
+              include_once "vistas/modulos/accion-personal.php";
+
+            }
+
+          }
+        
+         
 
         }else{
 

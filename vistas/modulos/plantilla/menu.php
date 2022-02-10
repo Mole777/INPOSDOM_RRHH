@@ -1,9 +1,9 @@
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
-  <a href="index3.html" class="brand-link">
+  <a class="brand-link">
 
-    <img src="vistas/dist/img/AdminLTELogo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <img src="vistas/dist/img/inposdom.jpg" class="brand-image img-circle elevation-3" style="opacity: .8">
 
     <span class="brand-text font-weight-light"><b>RRHH</b></span>
   
@@ -15,13 +15,13 @@
   
       <div class="image">
   
-        <img src="vistas/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        <img src="vistas/dist/img/user-anonymous.png" class="img-circle elevation-2" alt="User Image">
   
       </div>
   
       <div class="info">
   
-        <a href="#" class="d-block"> <?= $_SESSION["Nombre"]; ?></a>
+        <a class="d-block"> <?= $_SESSION["Nombre"]; ?></a>
   
         <i class="muted" style="color: white;"> <?= $_SESSION["Rol"]; ?></i>
   
@@ -31,7 +31,10 @@
 
     <nav class="mt-2">
 
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"> 
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">     
+        
+        <?php if (isset($_SESSION["AccionAdministrativa"])): ?>
+          
         
         <li class="nav-item">
 
@@ -45,15 +48,19 @@
 
         </li>
 
+        <?php endif ?>
+
+
+
         <li class="nav-item has-treeview menu-close">
-          <a href="#" class="nav-link">
+          <a class="nav-link">
             <i class="nav-icon fas fa-users"></i>
             <p>
               Reclutamiendo y Seleción de Personal
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
-      
+        <?php if (isset($_SESSION["AccionAdministrativa"])): ?>
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="departamentos" class="nav-link">
@@ -67,6 +74,7 @@
                 <p>Posiciones</p>
               </a>
             </li>
+          <?php endif; ?>
             <li class="nav-item">
               <a href="accion-personal" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
@@ -75,7 +83,9 @@
             </li>
           </ul>
         </li>
-
+         
+        <?php if (isset($_SESSION["AccionAdministrativa"])): ?>
+          
         <li class="nav-item">
 
           <a href="administrador-usuarios" class="nav-link">
@@ -87,7 +97,9 @@
           </a>
 
         </li>
-    
+
+        <?php endif ?>
+
       </ul>
       
     </nav>

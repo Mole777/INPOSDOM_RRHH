@@ -61,7 +61,11 @@
                   <tr>
                     <th>No.</th>
                     <th>Nombre</th>
+                    <?php if (isset($_SESSION["AccionAdministrativa"])): ?>
+                      
                     <th>Acciones</th>
+                    
+                    <?php endif ?>
                   </tr>
                 </thead>
                 <tbody>

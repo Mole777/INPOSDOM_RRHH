@@ -13,32 +13,41 @@ class ctrUsuario{
 				$campo = "Usuario";
 				$valor = $_POST["ingUsuario"];
 
-				$respuesta = mdlUsuario::mdlMostrarUsuario($tabla, $campo, $valor);			
-		
+			
+				$respuesta = mdlUsuario::mdlMostrarUsuario($tabla, $campo, $valor);	
 
-				if ($respuesta["Usuario"] == $_POST["ingUsuario"] && $respuesta["Clave"] == $_POST["ingClave"] && $respuesta["Estado"] == "Activo") {
+				if ($respuesta != false) {
 					
-					$_SESSION["IniciarSesion"] = "ok";
-					$_SESSION["Nombre"] = $respuesta["Nombre"];
-					$_SESSION["Apellido"] = $respuesta["Apellido"];
-					$_SESSION["Rol"] = $respuesta["Rol"];
-					$_SESSION["Departamento"] = $respuesta["Departamento"];
-					$_SESSION["UsuarioID"] = $respuesta["Id"];
 
+					if (strtolower($respuesta["Usuario"]) == strtolower($_POST["ingUsuario"]) && strtolower($respuesta["Clave"]) == strtolower($_POST["ingClave"]) && $respuesta["Estado"] == "Activo") {
+					
+						$_SESSION["IniciarSesion"] = "ok";
+						$_SESSION["Nombre"] = $respuesta["Nombre"];
+						$_SESSION["Apellido"] = $respuesta["Apellido"];
+						$_SESSION["Rol"] = $respuesta["Rol"];
+						if (strtolower($respuesta["Rol"]) == strtolower("Programador") || strtolower($respuesta["Rol"]) == strtolower("Administrador") ) {
+							$_SESSION["AccionAdministrativa"] = true;
+						}
+						$_SESSION["Departamento"] = $respuesta["Departamento"];
+						$_SESSION["UsuarioID"] = $respuesta["Id"];
 
-					echo '<script>
+						echo '<script>
 
-							window.location = "accion-personal";
+								window.location = "accion-personal";
 
-						</script>';
+							</script>';
 
-					header("Refresh:0");
+						header("Refresh:0");
 
-				}
+					}
+
+				}		
+
+				
 								
 			}
 			
-		}
+		}	
 		
 	}
 		

@@ -1,3 +1,3 @@
 <footer class="main-footer">
-	<strong>Copyright &copy; <?= date("Y"); ?>.</strong> Todos los derechos reservados
+	<strong>Copyright &copy; <?= date("Y"); ?>.</strong> Desarrollado por Génesis M. Sarante Feliz
 </footer>
