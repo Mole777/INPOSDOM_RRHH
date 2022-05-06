@@ -6,36 +6,33 @@
 		{
 			if (isset($_POST["guardar"])) {
 				
-				if (isset($_POST["regNombre"])) {
+				if (isset($_POST["regNombre"]) && Validaciones::soloLetras($_POST["regNombre"])) {
+		
+					$tabla = "departamentos_inposdom";
 
-					if (Validaciones::soloLetras($_POST["regNombre"])) {
+					$datos = array('nombre' => $_POST["regNombre"]);
+					$respuesta = mdlDepartamento::mdlCrearDepartamento($tabla, $datos);
+
+					if ($respuesta == "ok") {
 						
-						$tabla = "departamentos_inposdom";
+						echo'<script>
 
-						$datos = array('nombre' => $_POST["regNombre"]);
-						$respuesta = mdlDepartamento::mdlCrearDepartamento($tabla, $datos);
+								Swal.fire({
+								  icon: "success",
+								  title: "Se ha creado correctamente el departamento",
+								  showConfirmButton: true, 
+								}).then(function(result){
 
-						if ($respuesta == "ok") {
-							
-							echo'<script>
-
-									Swal.fire({
-									  icon: "success",
-									  title: "Se ha creado correctamente el departamento",
-									  showConfirmButton: true, 
-									}).then(function(result){
-
-										if(result.value){
-										
-											window.location = "departamentos";
+									if(result.value){
+									
+										window.location = "departamentos";
 
 
-										}
-									});
+									}
+								});
 
-									</script>';
+								</script>';
 
-						}
 					}
 	
 				}
@@ -53,17 +50,17 @@
 
 		public function ctrEditarDepartamento()
 		{
-			if (isset($_POST["actualizar"])) {
-				
-				if (isset($_POST["regNombre"])) {
+			if (isset($_POST["actualizar"]) && isset($_POST["regNombre"])) 
+			{
 					
-					$tabla = "departamentos_inposdom";
-					$datos = array('id' => $_POST["idDepartamento"],
-						'nombre' => $_POST["regNombre"]);
+				$tabla = "departamentos_inposdom";
+				$datos = array('id' => $_POST["idDepartamento"],
+					'nombre' => $_POST["regNombre"]);
 
-					$respuesta = mdlDepartamento::mdlEditarDepartamento($tabla, $datos);
+				$respuesta = mdlDepartamento::mdlEditarDepartamento($tabla, $datos);
 
-					if($respuesta){
+				if($respuesta)
+				{
 
 					echo'<script>
 
@@ -82,7 +79,6 @@
 
 					</script>';
 
-				}
 				}
 			}
 		}
