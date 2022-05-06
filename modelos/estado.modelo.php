@@ -32,7 +32,7 @@ class mdlEstado{
 
 		}
 
-		$stmt->close();
+		
 		$stmt = null;
 
 	}
