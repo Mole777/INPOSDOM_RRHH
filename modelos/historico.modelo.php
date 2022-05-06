@@ -12,7 +12,7 @@
 			
 			return $historico->fetchAll();
 
-			$historico = null;
+			
 		}
 
 		static public function mdlCrearHistorico($datos)
@@ -30,7 +30,7 @@
 
 
 				
-				$historico = null; 
+				 
 
 		}
 

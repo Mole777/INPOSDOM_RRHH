@@ -32,8 +32,7 @@ class mdlEstado{
 
 		}
 
-		
-		$stmt = null;
+
 
 	}
 

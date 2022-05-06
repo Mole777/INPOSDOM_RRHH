@@ -32,7 +32,7 @@ class mdlPersonal{
 		}
 		
 
-		$stmt = null;
+		
 	}
 
 	static public function mdlMostrarPersonal($tabla, $campo, $valor)
@@ -70,7 +70,7 @@ class mdlPersonal{
 		}
 
 
-		$stmt = null;
+		
 			
 	}
 
@@ -104,7 +104,7 @@ class mdlPersonal{
 			}
 
 
-			$stmt=null;
+			
 		}
 
 	static public function mdlEliminarPersonal($tabla, $datos)
@@ -122,7 +122,7 @@ class mdlPersonal{
 			return false;
 		}
 
-		$stmt=null;
+		
 	}
 
 

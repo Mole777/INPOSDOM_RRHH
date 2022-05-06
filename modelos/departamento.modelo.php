@@ -19,8 +19,7 @@
 				return false;
 			}
 
-			
-			$stmt=null;
+		
 
 		}
 
@@ -47,7 +46,7 @@
 			}
 			
 						
-			$stmt = null;
+			
 		}
 
 		static public function mdlEditarDepartamento($tabla, $datos)
@@ -68,7 +67,7 @@
 			}
 
 			
-			$stmt=null;
+			
 		}
 
 		static public function mdlEliminarDepartamento($tabla, $datos)
@@ -87,7 +86,7 @@
 			}
 
 			
-			$stmt=null;
+			
 		}
 
 

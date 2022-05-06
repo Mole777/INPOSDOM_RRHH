@@ -22,7 +22,7 @@ class mdlDocumento{
 		}
 
 		
-		$stmt = null;
+		
 	}
 
 }

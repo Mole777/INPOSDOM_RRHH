@@ -23,7 +23,7 @@ class mdlUsuario{
 			
 			return "error";
 		}
-		$stmt = null;
+		
 	}
 
 	static public function mdlMostrarUsuario($tabla, $campo, $valor)
@@ -53,7 +53,7 @@ class mdlUsuario{
 
 			return $stmt->fetchAll();
 		}
-		$stmt = null;
+		
 		
 	}
 
@@ -78,7 +78,7 @@ class mdlUsuario{
 				return false;
 			}
 
-			$stmt=null;
+			
 
 	}
 

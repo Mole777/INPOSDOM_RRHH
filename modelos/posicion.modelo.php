@@ -19,7 +19,7 @@
 				return false;
 			}
 
-			$stmt=null;
+			
 
 		}
 
@@ -45,7 +45,7 @@
 				return $stmt->fetchAll();
 			}
 						
-			$stmt = null;
+		
 		}
 
 		static public function mdlEditarPosicion($tabla, $datos)
@@ -65,7 +65,7 @@
 				return false;
 			}
 
-			$stmt=null;
+			
 		}
 
 		static public function mdlEliminarPosicion($tabla, $datos)
@@ -83,7 +83,7 @@
 				return false;
 			}
 
-			$stmt=null;
+			
 		}
 
 
