@@ -19,7 +19,7 @@
 				return false;
 			}
 
-			$stmt->close();
+			
 			$stmt=null;
 
 		}
@@ -46,7 +46,7 @@
 				return $stmt->fetchAll();
 			}
 			
-			$stmt->close();			
+						
 			$stmt = null;
 		}
 
@@ -67,7 +67,7 @@
 				return false;
 			}
 
-			$stmt->close();
+			
 			$stmt=null;
 		}
 
@@ -86,7 +86,7 @@
 				return false;
 			}
 
-			$stmt->close();
+			
 			$stmt=null;
 		}
 

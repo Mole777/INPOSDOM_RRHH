@@ -21,7 +21,7 @@ class mdlDocumento{
 			return $stmt->fetchAll();
 		}
 
-		$stmt->close();
+		
 		$stmt = null;
 	}
 

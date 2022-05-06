@@ -32,7 +32,6 @@ class mdlPersonal{
 		}
 		
 
-		$stmt->close();
 		$stmt = null;
 	}
 
@@ -70,7 +69,6 @@ class mdlPersonal{
 		
 		}
 
-		$stmt->close();
 
 		$stmt = null;
 			
@@ -105,7 +103,7 @@ class mdlPersonal{
 				return "error";
 			}
 
-			$stmt->close();
+
 			$stmt=null;
 		}
 
@@ -124,7 +122,6 @@ class mdlPersonal{
 			return false;
 		}
 
-		$stmt->close();
 		$stmt=null;
 	}
 

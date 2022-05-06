@@ -12,7 +12,6 @@
 			
 			return $historico->fetchAll();
 
-			$historico->close();
 			$historico = null;
 		}
 
@@ -29,7 +28,7 @@
 					return false;
 				}
 
-				$historico->close();
+
 				
 				$historico = null; 
 

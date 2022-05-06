@@ -23,8 +23,6 @@ class mdlUsuario{
 			
 			return "error";
 		}
-
-		$stmt->close();
 		$stmt = null;
 	}
 
@@ -55,8 +53,6 @@ class mdlUsuario{
 
 			return $stmt->fetchAll();
 		}
-
-		$stmt->close();
 		$stmt = null;
 		
 	}
@@ -82,7 +78,6 @@ class mdlUsuario{
 				return false;
 			}
 
-			$stmt->close();
 			$stmt=null;
 
 	}
