@@ -5,18 +5,12 @@ class Conexion{
 	static public function conectar()
 	{
 		
-		try {
-			
-			$link = new PDO("mysql:host=localhost;dbname=db_rrhh", "root", "");
+		$link = new PDO("mysql:host=localhost;port=3306;dbname=db_rrhh", "Melquisedec", "M3l9u1s3d3c");
 
-			$link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-			return $link;
+		return $link;
 
-		} catch (PDOException $e) {
-			
-			return $e;
-		}
 	}
 
 }

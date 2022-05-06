@@ -193,8 +193,7 @@
 
                       $mostrarRoles = ctrRol::ctrMostrarRoles($campo, $valor);
 
-                      foreach ($mostrarRoles as $key => $value): 
-                    ?>
+                      foreach ($mostrarRoles as $key => $value): ?>
                       
                       <option value="<?= $value["Id"] ?>"><?= $value["Nombre"] ?></option>
 

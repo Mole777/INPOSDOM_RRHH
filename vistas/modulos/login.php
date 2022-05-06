@@ -5,7 +5,8 @@
 
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <h2><b>RRHH</b></h2>
+      <h2><b>SGRRHH</b></h2>
+      <p>Sistema de Gestión de Recursos Humanos</p>
     </div>
     <div class="card-body login-card-body">
 
