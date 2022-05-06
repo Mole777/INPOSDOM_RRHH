@@ -4,38 +4,36 @@
 
 		public function ctrCrearDepartamento()
 		{
-			if (isset($_POST["guardar"])) {
-				
-				if (isset($_POST["regNombre"]) && Validaciones::soloLetras($_POST["regNombre"])) {
-		
-					$tabla = "departamentos_inposdom";
-
-					$datos = array('nombre' => $_POST["regNombre"]);
-					$respuesta = mdlDepartamento::mdlCrearDepartamento($tabla, $datos);
-
-					if ($respuesta == "ok") {
-						
-						echo'<script>
-
-								Swal.fire({
-								  icon: "success",
-								  title: "Se ha creado correctamente el departamento",
-								  showConfirmButton: true, 
-								}).then(function(result){
-
-									if(result.value){
-									
-										window.location = "departamentos";
-
-
-									}
-								});
-
-								</script>';
-
-					}
+			
+			if (isset($_POST["guardar"]) && isset($_POST["regNombre"]) && Validaciones::soloLetras($_POST["regNombre"])) {
 	
+				$tabla = "departamentos_inposdom";
+
+				$datos = array('nombre' => $_POST["regNombre"]);
+				$respuesta = mdlDepartamento::mdlCrearDepartamento($tabla, $datos);
+
+				if ($respuesta == "ok") {
+					
+					echo'<script>
+
+							Swal.fire({
+							  icon: "success",
+							  title: "Se ha creado correctamente el departamento",
+							  showConfirmButton: true, 
+							}).then(function(result){
+
+								if(result.value){
+								
+									window.location = "departamentos";
+
+
+								}
+							});
+
+							</script>';
+
 				}
+
 			}
 		}
 
